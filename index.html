@@ -47,8 +47,25 @@ tr:hover td{background:rgba(96,165,250,.04)}
 </head>
 <body>
 <div class="container">
-<h1>🎮 道具卡钻石兑换改版影响分析报告 V2</h1>
-<p class="subtitle">数据区间: 2025-09-02 ~ 2026-04-07 | 新版本上线日: 2025-12-18 | 含 gift_1006 / endlessgift 分流 & 钻石应收实收分析</p>
+<h1>🎮 游戏内购收入分析 & 道具卡钻石兑换改版影响评估</h1>
+<p class="subtitle">数据区间: 2025-09-02 ~ 2026-04-07 | 新版本上线日: 2025-12-18</p>
+
+<!-- 导航索引 -->
+<div class="note" style="border-left-color:#60a5fa">
+<h3>📑 报告目录</h3>
+<p style="line-height:2.2">
+<b>一、核心结论</b> — 关键发现与建议<br>
+<b>二、游戏整体收入概览</b> — 各模块收入构成、占比及趋势（<span style="color:#22c55e">道具卡占比远超预期</span>）<br>
+<b>三、版本覆盖情况</b> — 新版本(2.3+)用户渗透率<br>
+<b>四、道具卡钻石兑换影响分析</b> — 12.18改版后道具卡收入变化、趋势外推、分规格拆解<br>
+<b>五、道具卡流出与钻石消耗</b> — 道具卡实际流出量、钻石兑换量、应收vs实收<br>
+<b>六、关联品类分析</b> — 空投礼包(gift_1006)、无尽礼包(endlessgift)是否承接分流<br>
+<b>七、综合等效收入</b> — 全渠道还原后的道具卡等效收入 vs 趋势预测
+</p>
+</div>
+
+<!-- ==================== 一、核心结论 ==================== -->
+<h2 style="font-size:20px;margin:28px 0 16px;padding-left:12px;border-left:4px solid #a78bfa;color:#a78bfa">一、核心结论</h2>
 
 <div class="kpi-row">
 <div class="kpi-card"><div class="label">道具卡实际 vs 趋势预测</div><div class="value down" id="kpi1"></div><div class="detail" id="kpi1d"></div></div>
@@ -67,24 +84,28 @@ tr:hover td{background:rgba(96,165,250,.04)}
 <p>
 ① <b>趋势外推</b>：用上线前道具卡收入做线性外推，得出"如果保持旧模式"的预期曲线<br>
 ② <b>钻石拆分</b>：以老版本用户钻石消费强度为基准，推算新版本钻石中的"道具卡兑换部分"<br>
-③ <b>gift_1006/endlessgift</b>：使用稳态基准(10月~12.17)而非线性外推，只计算超出稳态的增量部分<br>
-④ <b>等效总收入</b> = 道具卡现金 + 钻石道具卡部分 + gift_1006超基准增量 + endlessgift超基准增量<br>
+③ <b>关联品类</b>：空投礼包(gift_1006)、无尽礼包(endlessgift)使用稳态基准(10月~12.17)，只计算超出稳态的增量<br>
+④ <b>等效总收入</b> = 道具卡现金 + 钻石道具卡部分 + 空投礼包超基准增量 + 无尽礼包超基准增量<br>
 ⑤ <b>应收分析</b>：按各档位销量加权单价($0.00228/钻)计算钻石消耗的等效现金价值
 </p>
 </div>
 
-<!-- 版本覆盖 -->
-<div class="section">
-<h2>👥 版本覆盖情况</h2>
-<div class="desc">新版本(2.3+)用户数及占比趋势，左轴=用户数，右轴=新版本占比</div>
-<div id="chartVer" class="chart-box"></div>
+<!-- ==================== 二、游戏整体收入概览 ==================== -->
+<h2 style="font-size:20px;margin:28px 0 16px;padding-left:12px;border-left:4px solid #22c55e;color:#22c55e">二、游戏整体收入概览</h2>
+
+<div class="note" style="border-left-color:#22c55e">
+<h3>💡 关键发现</h3>
+<p>
+<b>道具卡收入占总直购收入的 35~42%，远超预期。</b>作为一个辅助道具，道具卡是游戏最大的单品类收入来源（仅次于金币），
+这意味着任何对道具卡购买方式的调整都会对整体收入产生显著影响。<br><br>
+七大收入模块中，<b>金币</b>（~41%）和<b>道具卡</b>（~37%）合计占总收入近80%，其余五个模块（钻石、空投礼包、无尽礼包、幸运金币礼包、限时破产礼包）合计仅占约20%。
+</p>
 </div>
 
-<!-- 直购收入构成 -->
 <div class="two-col">
 <div class="section">
 <h2>💰 直购收入构成 — 日度趋势(7日均)</h2>
-<div class="desc">各模块收入的7日移动平均，堆叠面积图，从下到上：道具卡→钻石→空投→无尽→限时破产→幸运→金币</div>
+<div class="desc">各模块收入的7日移动平均，堆叠面积图</div>
 <div id="chartRev" class="chart-box"></div>
 </div>
 <div class="section">
@@ -94,35 +115,54 @@ tr:hover td{background:rgba(96,165,250,.04)}
 </div>
 </div>
 
-<!-- 直购收入百分比变化 -->
 <div class="section">
 <h2>📈 直购收入构成 — 各模块占比变化趋势</h2>
 <div class="desc">各收入类型占总直购收入的百分比（7日移动平均），观察道具卡和钻石占比此消彼长</div>
 <div id="chartRevPct" class="chart-box tall"></div>
 </div>
 
-<!-- 按版本分的收入占比表 -->
 <div class="section">
 <h2>📋 直购收入月度明细与占比（按版本归属标注）</h2>
 <div class="desc">🟢 老版本only | 🔵 新版本only | ⚪ 新老都有</div>
 <div style="overflow-x:auto"><table id="tblRevDetail"></table></div>
 </div>
 
-<!-- 道具卡 -->
+<!-- ==================== 三、版本覆盖情况 ==================== -->
+<h2 style="font-size:20px;margin:28px 0 16px;padding-left:12px;border-left:4px solid #06b6d4;color:#06b6d4">三、版本覆盖情况</h2>
+
+<div class="section">
+<h2>👥 版本覆盖情况</h2>
+<div class="desc">新版本(2.3+)用户数及占比趋势，左轴=用户数，右轴=新版本占比。12.18上线后迅速达到~13%，此后缓慢上升至~21%</div>
+<div id="chartVer" class="chart-box"></div>
+</div>
+
+<!-- ==================== 四、道具卡钻石兑换影响分析 ==================== -->
+<h2 style="font-size:20px;margin:28px 0 16px;padding-left:12px;border-left:4px solid #f59e0b;color:#f59e0b">四、道具卡钻石兑换影响分析</h2>
+
+<div class="note" style="border-left-color:#f59e0b">
+<h3>📌 背景</h3>
+<p>
+2025年12月18日，新版本(2.3+)将道具卡从<b>现金直购</b>改为<b>钻石兑换</b>（399钻=30张，1299钻=100张，4499钻=300张）。
+由于外网玩家有钻石存量，改版后玩家可以用存量钻石兑换道具卡而不产生现金收入。
+需要评估：这个改变是否影响了道具卡收入？影响程度如何？随着存量消耗是否会恢复？
+</p>
+</div>
+
 <div class="section">
 <h2>📊 道具卡流水 — 实际值 vs 趋势预测</h2>
 <div class="desc">蓝色=7日均线，橙色虚线=按上线前趋势外推的预测值，红色竖线=2025-12-18新版本上线</div>
 <div id="chartIC" class="chart-box tall"></div>
 </div>
 
-<!-- 道具卡分规格 -->
 <div class="section">
 <h2>🃏 道具卡分规格售卖趋势</h2>
-<div class="desc">三种规格道具卡的流水(7日均)和购买人数(7日均)变化。左轴=流水，右轴=购买人数</div>
+<div class="desc">三种规格：×30($0.99) / ×100($2.99) / ×500($9.98)。左轴=流水，右轴=购买人数</div>
 <div id="chartICSpec" class="chart-box tall"></div>
 </div>
 
-<!-- 道具卡流出分析 -->
+<!-- ==================== 五、道具卡流出与钻石消耗 ==================== -->
+<h2 style="font-size:20px;margin:28px 0 16px;padding-left:12px;border-left:4px solid #60a5fa;color:#60a5fa">五、道具卡流出与钻石消耗</h2>
+
 <div class="section">
 <h2>📦 道具卡流出总量趋势（新老版本合计）</h2>
 <div class="desc">每日道具卡总流出量和获取人数（7日均）。数据含现金购买、钻石兑换、广告获取等全渠道</div>
@@ -142,7 +182,6 @@ tr:hover td{background:rgba(96,165,250,.04)}
 </div>
 </div>
 
-<!-- 钻石应收vs实收 -->
 <div class="two-col">
 <div class="section">
 <h2>💵 道具卡钻石兑换：应收 vs 实收（7日均）</h2>
@@ -156,24 +195,34 @@ tr:hover td{background:rgba(96,165,250,.04)}
 </div>
 </div>
 
-<!-- gift_1006 和 endlessgift -->
+<!-- ==================== 六、关联品类分析 ==================== -->
+<h2 style="font-size:20px;margin:28px 0 16px;padding-left:12px;border-left:4px solid #888;color:#aaa">六、关联品类分析</h2>
+
+<div class="note" style="border-left-color:#888">
+<h3>📌 分析逻辑</h3>
+<p>
+道具卡改为钻石兑换后，玩家的道具卡需求是否分流到了其他含道具卡/钻石的商品？重点关注两个品类：<br>
+• <b>空投礼包 (gift_1006)</b>：含50,000金币 + 400宝石 + 30道具卡，性价比拉满<br>
+• <b>无尽礼包 (endlessgift系列)</b>：多档位礼包，部分含钻石<br>
+结论：两者上线后均下降，<b>未承接道具卡分流需求</b>。
+</p>
+</div>
+
 <div class="two-col">
 <div class="section">
-<h2>🎁 gift_1006 售卖趋势</h2>
-<div class="desc">含50000金币+400宝石+30道具卡的礼包，观察上线前后变化</div>
+<h2>🎁 空投礼包 (gift_1006) 售卖趋势</h2>
+<div class="desc">含50,000金币+400宝石+30道具卡。稳态基准$52/天，上线后$42/天（-19.5%）</div>
 <div id="chartGift" class="chart-box"></div>
 </div>
 <div class="section">
-<h2>🎁 endlessgift 售卖趋势</h2>
-<div class="desc">无尽礼包系列（含钻石），观察上线前后变化</div>
+<h2>🎁 无尽礼包 (endlessgift) 售卖趋势</h2>
+<div class="desc">多档位无尽礼包系列（含钻石）。稳态基准$217/天，上线后$189/天（-13%）</div>
 <div id="chartEndless" class="chart-box"></div>
 </div>
 </div>
 
-<!-- 综合 -->
-<div class="section">
-<h2>🔄 综合等效收入（道具卡+钻石+gift+endlessgift）vs 趋势预测</h2>
-<div class="desc">堆叠柱状图分解各渠道贡献，绿色线=等效总收入7日均，紫色虚线=趋势预测</div>
+<!-- ==================== 七、综合等效收入 ==================== -->
+<h2 style="font-size:20px;margin:28px 0 16px;padding-left:12px;border-left:4px solid #a78bfa;color:#a78bfa">七、综合等效收入</h2>
 <div id="chartCombined" class="chart-box tall"></div>
 </div>
 
