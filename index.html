@@ -260,6 +260,8 @@ function init(id){return echarts.init(document.getElementById(id));}
   // 全量后如果实收率提升到70%：实收≈$1,667*70%=$1,167
   const curDailyShould = (gr.total_should||36792)/105;
   const fullShould = curDailyShould / 0.21;
+  const rate19 = fullShould * 0.19;
+  const rate35 = fullShould * 0.35;
   const rate54 = fullShould * 0.54;
   const rate70 = fullShould * 0.70;
   const rate90 = fullShould * 0.90;
@@ -269,10 +271,15 @@ function init(id){return echarts.init(document.getElementById(id));}
 • 道具卡现金直购收入将<b style="color:#ef4444">降为$0</b>（所有用户改为钻石兑换）<br>
 • 钻石兑换应收预估（按当前消耗强度等比外推）：<b style="color:#f59e0b">~$${Math.round(fullShould).toLocaleString()}/天</b><br><br>
 <b style="color:#e0e0e0">实收预测（取决于实收率）：</b><br>
-• 实收率54%（当前3月水平）：日均 <b style="color:#ef4444">~$${Math.round(rate54).toLocaleString()}</b>，vs 当前总收入$950 → <span style="color:#ef4444">收入下降约5%</span><br>
+<span style="color:#888;font-size:12px">参考当前21%用户的实际经验，版本切换后实收率从极低水平逐步爬升：1月~19% → 2月~35% → 3月~54%。全量切换后，由于80%老版本用户同时涌入，预计初期实收率将重演类似的低位起步过程。</span><br><br>
+<span style="color:#888;font-size:11px">▸ 全量切换初期（过渡期）</span><br>
+• 实收率~19%（对标当前1月水平，存量冲高期）：日均 <b style="color:#ef4444">~$${Math.round(rate19).toLocaleString()}</b>，vs 当前总收入$950 → <span style="color:#ef4444">收入暴跌约${Math.round((1-rate19/950)*100)}%</span><br>
+• 实收率~35%（对标当前2月水平，存量消耗减速）：日均 <b style="color:#ef4444">~$${Math.round(rate35).toLocaleString()}</b> → <span style="color:#ef4444">收入下降约${Math.round((1-rate35/950)*100)}%</span><br><br>
+<span style="color:#888;font-size:11px">▸ 过渡期后（存量逐步消耗）</span><br>
+• 实收率54%（对标当前3月水平）：日均 <b style="color:#ef4444">~$${Math.round(rate54).toLocaleString()}</b>，vs 当前总收入$950 → <span style="color:#ef4444">收入下降约5%</span><br>
 • 实收率70%（存量进一步消耗）：日均 <b style="color:#f59e0b">~$${Math.round(rate70).toLocaleString()}</b> → <span style="color:#22c55e">收入增长约23%</span><br>
 • 实收率90%（存量基本耗尽）：日均 <b style="color:#22c55e">~$${Math.round(rate90).toLocaleString()}</b> → <span style="color:#22c55e">收入增长约58%</span><br><br>
-<b style="color:#ef4444">⚠️ 关键风险：全量推送初期，由于大量老版本用户首次获得钻石兑换入口，可能出现类似当前1月的存量消耗冲高，在过渡期造成显著收入损失。建议全量前充分评估全服钻石存量规模。</b>
+<b style="color:#ef4444">⚠️ 关键风险：全量推送初期，大量老版本用户首次获得钻石兑换入口，预计将重演类似1月的存量冲高过程（实收率可能低至~19%），过渡期约2~3个月。期间日均收入可能从当前$950骤降至$${Math.round(rate19).toLocaleString()}~$${Math.round(rate35).toLocaleString()}，造成显著收入损失。建议全量前充分评估全服钻石存量规模，并准备过渡期运营策略。</b>
   `;
 })();
 
