@@ -8,35 +8,25 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:#0f1117;color:#e0e0e0}
-/* 侧边栏 */
 .sidebar{position:fixed;left:0;top:0;width:200px;height:100vh;background:#13151f;border-right:1px solid #2a2d3e;padding:20px 0;overflow-y:auto;z-index:100}
 .sidebar .logo{font-size:14px;font-weight:700;color:#a78bfa;padding:0 16px 16px;border-bottom:1px solid #2a2d3e;margin-bottom:8px}
 .sidebar a{display:block;padding:10px 16px;font-size:12px;color:#888;text-decoration:none;border-left:3px solid transparent;transition:all .2s}
 .sidebar a:hover{color:#e0e0e0;background:rgba(96,165,250,.06)}
 .sidebar a.active{color:#60a5fa;border-left-color:#60a5fa;background:rgba(96,165,250,.08)}
 .sidebar .nav-dot{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:8px;vertical-align:middle}
-/* 主内容偏移 */
 .container{max-width:1440px;margin:0 auto;padding:24px 24px 24px 224px}
 @media(max-width:1200px){.sidebar{display:none}.container{padding:24px}}
 h1{text-align:center;font-size:26px;font-weight:700;margin:16px 0 6px;background:linear-gradient(135deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .subtitle{text-align:center;font-size:13px;color:#888;margin-bottom:24px}
-.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
-.kpi-card{background:#1a1d2e;border-radius:10px;padding:16px 18px;border:1px solid #2a2d3e}
-.kpi-card .label{font-size:12px;color:#888;margin-bottom:6px}
-.kpi-card .value{font-size:26px;font-weight:700}
-.kpi-card .value.up{color:#22c55e}.kpi-card .value.down{color:#ef4444}.kpi-card .value.neutral{color:#60a5fa}.kpi-card .value.warn{color:#f59e0b}
-.kpi-card .detail{font-size:11px;color:#666;margin-top:4px}
 .section{background:#1a1d2e;border-radius:10px;padding:20px;margin-bottom:20px;border:1px solid #2a2d3e}
 .section h2{font-size:16px;font-weight:600;margin-bottom:4px;color:#e0e0e0}
 .section .desc{font-size:12px;color:#888;margin-bottom:14px}
-.chart-box{width:100%;height:360px}
-.chart-box.tall{height:400px}
+.chart-box{width:100%;height:360px}.chart-box.tall{height:400px}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
 .note{background:#12141f;border-radius:8px;padding:16px;margin-bottom:20px;border-left:4px solid #a78bfa}
 .note h3{font-size:14px;color:#a78bfa;margin-bottom:6px}
 .note p{font-size:12px;line-height:1.7;color:#999}
-.conclusion{background:linear-gradient(135deg,#1a1d2e,#1e2235);border-radius:10px;padding:24px;margin-top:24px;border:1px solid #3a3d5e}
+.conclusion{background:linear-gradient(135deg,#1a1d2e,#1e2235);border-radius:10px;padding:24px;margin-bottom:24px;border:1px solid #3a3d5e}
 .conclusion h2{font-size:18px;margin-bottom:14px;background:linear-gradient(135deg,#f59e0b,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .conclusion li{padding:8px 0;border-bottom:1px solid #2a2d3e;font-size:13px;line-height:1.7;list-style:none}
 .conclusion li:last-child{border:none}
@@ -46,198 +36,149 @@ h1{text-align:center;font-size:26px;font-weight:700;margin:16px 0 6px;background
 .tag-yellow{background:rgba(245,158,11,.15);color:#f59e0b}
 .tag-blue{background:rgba(96,165,250,.15);color:#60a5fa}
 .tag-gray{background:rgba(136,136,136,.15);color:#aaa}
+.ch{font-size:20px;margin:28px 0 16px;padding-left:12px;border-left:4px solid}
+.ch-sub{font-size:16px;margin:20px 0 12px}
 table{width:100%;border-collapse:collapse;font-size:12px}
 th{background:#12141f;padding:8px 10px;text-align:right;color:#888;font-weight:500;border-bottom:1px solid #2a2d3e}
 td{padding:8px 10px;text-align:right;border-bottom:1px solid #1e2030}
 th:first-child,td:first-child{text-align:left}
 tr:hover td{background:rgba(96,165,250,.04)}
-@media(max-width:900px){.kpi-row,.two-col,.three-col{grid-template-columns:1fr}}
+@media(max-width:900px){.two-col{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<!-- 侧边栏导航 -->
 <nav class="sidebar">
 <div class="logo">📊 收入分析报告</div>
+<a href="#sec0" style="color:#e0e0e0;font-weight:600"><span class="nav-dot" style="background:#e0e0e0"></span>分析背景</a>
 <a href="#sec1"><span class="nav-dot" style="background:#a78bfa"></span>核心结论</a>
-<a href="#sec2"><span class="nav-dot" style="background:#22c55e"></span>整体收入概览</a>
-<a href="#sec3"><span class="nav-dot" style="background:#06b6d4"></span>版本覆盖情况</a>
-<a href="#sec4"><span class="nav-dot" style="background:#f59e0b"></span>道具卡改版分析</a>
-<a href="#sec5"><span class="nav-dot" style="background:#60a5fa"></span>流出与钻石消耗</a>
-<a href="#sec6"><span class="nav-dot" style="background:#888"></span>关联品类分析</a>
-<a href="#sec7"><span class="nav-dot" style="background:#a78bfa"></span>综合等效收入</a>
+<a href="#sec2"><span class="nav-dot" style="background:#22c55e"></span>一、整体收入概览</a>
+<a href="#sec3"><span class="nav-dot" style="background:#f59e0b"></span>二、道具卡改版影响</a>
+<a href="#sec3a" style="padding-left:28px;font-size:11px">· 版本覆盖</a>
+<a href="#sec3b" style="padding-left:28px;font-size:11px">· 销售额变化</a>
+<a href="#sec3c" style="padding-left:28px;font-size:11px">· 流出与钻石消耗</a>
+<a href="#sec3d" style="padding-left:28px;font-size:11px">· 关联品类</a>
+<a href="#sec3e" style="padding-left:28px;font-size:11px">· 综合等效收入</a>
+<a href="#sec3f" style="padding-left:28px;font-size:11px">· 全量预测</a>
 </nav>
-
 <div class="container">
 <h1>🎮 游戏内购收入分析 & 道具卡钻石兑换改版影响评估</h1>
 <p class="subtitle">数据区间: 2025-09-02 ~ 2026-04-07 | 新版本上线日: 2025-12-18</p>
 
-<!-- ==================== 一、核心结论 ==================== -->
-<h2 id="sec1" style="font-size:20px;margin:28px 0 16px;padding-left:12px;border-left:4px solid #a78bfa;color:#a78bfa">一、核心结论</h2>
-
-<div class="kpi-row">
-<div class="kpi-card"><div class="label">道具卡实际 vs 趋势预测</div><div class="value down" id="kpi1"></div><div class="detail" id="kpi1d"></div></div>
-<div class="kpi-card"><div class="label">等效总收入 vs 趋势预测</div><div class="value down" id="kpi2"></div><div class="detail" id="kpi2d"></div></div>
-<div class="kpi-card"><div class="label">钻石补偿日均</div><div class="value neutral" id="kpi3"></div><div class="detail" id="kpi3d"></div></div>
-<div class="kpi-card"><div class="label">新版本用户占比（最新）</div><div class="value neutral" id="kpi4"></div><div class="detail" id="kpi4d"></div></div>
+<!-- 分析背景 -->
+<div id="sec0" class="note" style="border-left-color:#e0e0e0;margin-top:20px">
+<h3 style="color:#e0e0e0">📌 分析背景</h3>
+<p style="font-size:13px;line-height:2">
+本报告基于游戏后台数据，对游戏内购收入进行了全面分析。<b style="color:#e0e0e0">在此分析之前，团队对游戏内各模块的收入构成和占比缺乏清晰认知。</b><br><br>
+报告分为两大部分：<br>
+<b style="color:#22c55e">一、游戏整体收入概览</b> — 首次全面披露游戏七大收入模块的构成、占比和趋势。<span style="color:#f59e0b">核心发现：道具卡收入占比高达35~42%，远超预期，</span>是仅次于金币的第二大收入来源。<br>
+<b style="color:#f59e0b">二、道具卡钻石兑换改版影响分析</b> — 2025.12.18新版本将道具卡从现金直购改为钻石兑换。鉴于道具卡占收入比重极高，需重点评估影响。涵盖：版本覆盖、销售额变化、流出与钻石消耗、关联品类、综合等效收入，以及<b style="color:#ef4444">新版本全量后的收入影响预测</b>。
+</p>
 </div>
 
-<div class="conclusion">
-<h2>📝 分析结论</h2>
-<ul id="conclusions"></ul>
-</div>
-
+<!-- 核心结论 -->
+<h2 id="sec1" class="ch" style="border-color:#a78bfa;color:#a78bfa">核心结论</h2>
+<div class="conclusion" style="margin-top:0"><ul id="conclusions"></ul></div>
 <div class="note">
 <h3>📐 分析方法</h3>
 <p>
 ① <b>趋势外推</b>：用上线前道具卡收入做线性外推，得出"如果保持旧模式"的预期曲线<br>
 ② <b>钻石拆分</b>：以老版本用户钻石消费强度为基准，推算新版本钻石中的"道具卡兑换部分"<br>
-③ <b>关联品类</b>：空投礼包(gift_1006)、无尽礼包(endlessgift)使用稳态基准(10月~12.17)，只计算超出稳态的增量<br>
+③ <b>关联品类</b>：空投礼包、无尽礼包使用稳态基准(10月~12.17)，只计算超出稳态的增量<br>
 ④ <b>等效总收入</b> = 道具卡现金 + 钻石道具卡部分 + 空投礼包超基准增量 + 无尽礼包超基准增量<br>
 ⑤ <b>应收分析</b>：按各档位销量加权单价($0.00228/钻)计算钻石消耗的等效现金价值
 </p>
 </div>
 
-<!-- ==================== 二、游戏整体收入概览 ==================== -->
-<h2 id="sec2" style="font-size:20px;margin:28px 0 16px;padding-left:12px;border-left:4px solid #22c55e;color:#22c55e">二、游戏整体收入概览</h2>
-
+<!-- 一、整体收入概览 -->
+<h2 id="sec2" class="ch" style="border-color:#22c55e;color:#22c55e">一、游戏整体收入概览</h2>
 <div class="note" style="border-left-color:#22c55e">
-<h3>💡 关键发现</h3>
-<p>
-<b>道具卡收入占总直购收入的 35~42%，远超预期。</b>作为一个辅助道具，道具卡是游戏最大的单品类收入来源（仅次于金币），
-这意味着任何对道具卡购买方式的调整都会对整体收入产生显著影响。<br><br>
-七大收入模块中，<b>金币</b>（~41%）和<b>道具卡</b>（~37%）合计占总收入近80%，其余五个模块（钻石、空投礼包、无尽礼包、幸运金币礼包、限时破产礼包）合计仅占约20%。
+<h3 style="color:#22c55e">💡 关键发现</h3>
+<p style="font-size:13px">
+<b style="color:#f59e0b">道具卡收入占总直购收入的 35~42%，远超预期。</b>作为辅助道具，道具卡是仅次于金币的第二大收入来源，任何对道具卡购买方式的调整都会对整体收入产生显著影响。<br><br>
+<b style="color:#e0e0e0">金币（~41%）和道具卡（~37%）合计占总收入近80%</b>，其余五个模块合计仅占约20%。
 </p>
 </div>
-
 <div class="two-col">
-<div class="section">
-<h2>💰 直购收入构成 — 日度趋势(7日均)</h2>
-<div class="desc">各模块收入的7日移动平均，堆叠面积图</div>
-<div id="chartRev" class="chart-box"></div>
+<div class="section"><h2>💰 直购收入构成 — 日度趋势(7日均)</h2><div class="desc">各模块收入的7日移动平均</div><div id="chartRev" class="chart-box"></div></div>
+<div class="section"><h2>💰 直购收入构成 — 月度金额</h2><div class="desc">各模块月度收入金额</div><div id="chartRevM" class="chart-box"></div></div>
 </div>
-<div class="section">
-<h2>💰 直购收入构成 — 月度金额</h2>
-<div class="desc">各模块月度收入金额</div>
-<div id="chartRevM" class="chart-box"></div>
-</div>
-</div>
+<div class="section"><h2>📈 直购收入构成 — 各模块占比变化趋势</h2><div class="desc">各收入类型占比（7日均），观察道具卡和钻石占比此消彼长</div><div id="chartRevPct" class="chart-box tall"></div></div>
+<div class="section"><h2>📋 直购收入月度明细（按版本归属标注）</h2><div class="desc">🟢 老版本only | 🔵 新版本only | ⚪ 新老都有</div><div style="overflow-x:auto"><table id="tblRevDetail"></table></div></div>
 
-<div class="section">
-<h2>📈 直购收入构成 — 各模块占比变化趋势</h2>
-<div class="desc">各收入类型占总直购收入的百分比（7日移动平均），观察道具卡和钻石占比此消彼长</div>
-<div id="chartRevPct" class="chart-box tall"></div>
-</div>
-
-<div class="section">
-<h2>📋 直购收入月度明细与占比（按版本归属标注）</h2>
-<div class="desc">🟢 老版本only | 🔵 新版本only | ⚪ 新老都有</div>
-<div style="overflow-x:auto"><table id="tblRevDetail"></table></div>
-</div>
-
-<!-- ==================== 三、版本覆盖情况 ==================== -->
-<h2 id="sec3" style="font-size:20px;margin:28px 0 16px;padding-left:12px;border-left:4px solid #06b6d4;color:#06b6d4">三、版本覆盖情况</h2>
-
-<div class="section">
-<h2>👥 版本覆盖情况</h2>
-<div class="desc">新版本(2.3+)用户数及占比趋势，左轴=用户数，右轴=新版本占比。12.18上线后迅速达到~13%，此后缓慢上升至~21%</div>
-<div id="chartVer" class="chart-box"></div>
-</div>
-
-<!-- ==================== 四、道具卡钻石兑换影响分析 ==================== -->
-<h2 id="sec4" style="font-size:20px;margin:28px 0 16px;padding-left:12px;border-left:4px solid #f59e0b;color:#f59e0b">四、道具卡钻石兑换影响分析</h2>
-
+<!-- 二、道具卡钻石兑换改版影响分析 -->
+<h2 id="sec3" class="ch" style="border-color:#f59e0b;color:#f59e0b">二、道具卡钻石兑换改版影响分析</h2>
 <div class="note" style="border-left-color:#f59e0b">
-<h3>📌 背景</h3>
-<p>
-2025年12月18日，新版本(2.3+)将道具卡从<b>现金直购</b>改为<b>钻石兑换</b>（399钻=30张，1299钻=100张，4499钻=300张）。
-由于外网玩家有钻石存量，改版后玩家可以用存量钻石兑换道具卡而不产生现金收入。
-需要评估：这个改变是否影响了道具卡收入？影响程度如何？随着存量消耗是否会恢复？
+<h3 style="color:#f59e0b">📌 背景</h3>
+<p style="font-size:13px">
+2025.12.18新版本将道具卡从<b style="color:#e0e0e0">现金直购</b>改为<b style="color:#e0e0e0">钻石兑换</b>（399钻=30张，1299钻=100张，4499钻=300张）。
+由于外网玩家有钻石存量，可用存量钻石兑换而不产生现金收入。<br>
+<span style="color:#ef4444">⚠️ 道具卡占总收入35~42%，若未来新版本全量覆盖，所有用户从现金直购切换为钻石兑换，对收入的影响将更加显著。</span>
 </p>
 </div>
 
-<div class="section">
-<h2>📊 道具卡流水 — 实际值 vs 趋势预测</h2>
-<div class="desc">蓝色=7日均线，橙色虚线=按上线前趋势外推的预测值，红色竖线=2025-12-18新版本上线</div>
-<div id="chartIC" class="chart-box tall"></div>
+<!-- 2.1 版本覆盖 -->
+<h3 id="sec3a" class="ch-sub" style="color:#06b6d4">2.1 版本覆盖情况</h3>
+<div class="section"><h2>👥 版本覆盖</h2><div class="desc">12.18上线迅速达~13%，此后缓慢上升至~21%。目前仅约1/5用户使用新版本</div><div id="chartVer" class="chart-box"></div></div>
+
+<!-- 2.2 销售额变化 -->
+<h3 id="sec3b" class="ch-sub" style="color:#f59e0b">2.2 道具卡销售额变化</h3>
+<div class="note" style="border-left-color:#f59e0b">
+<h3 style="color:#f59e0b">📊 趋势观察</h3>
+<p style="font-size:13px">
+道具卡销售额上线前呈<b style="color:#22c55e">明确上涨趋势</b>（从9月日均$770升到12月初$900+）。
+<b style="color:#ef4444">新版本上线后上涨趋势出现转折，增长停滞趋于平缓</b>（稳定在日均$840左右）。<br>
+原因：约20%的新版本用户不再现金购买道具卡，需求被分流到钻石兑换渠道。
+</p>
 </div>
+<div class="section"><h2>📊 道具卡实际销售金额 vs 趋势预测金额</h2><div class="desc">蓝色=7日均线(实际)，橙色虚线=趋势预测(如果保持旧模式)，红色竖线=12.18上线</div><div id="chartIC" class="chart-box tall"></div></div>
+<div class="section"><h2>🃏 道具卡分规格售卖趋势</h2><div class="desc">×30($0.99) / ×100($2.99) / ×500($9.98)。左轴=流水，右轴=购买人数</div><div id="chartICSpec" class="chart-box tall"></div></div>
 
-<div class="section">
-<h2>🃏 道具卡分规格售卖趋势</h2>
-<div class="desc">三种规格：×30($0.99) / ×100($2.99) / ×500($9.98)。左轴=流水，右轴=购买人数</div>
-<div id="chartICSpec" class="chart-box tall"></div>
+<!-- 2.3 流出与钻石消耗 -->
+<h3 id="sec3c" class="ch-sub" style="color:#60a5fa">2.3 道具卡流出与钻石消耗</h3>
+<div class="note" style="border-left-color:#60a5fa">
+<h3 style="color:#60a5fa">📦 流出与钻石消耗观察</h3>
+<p style="font-size:13px">
+新版本上线后道具卡总流出量<b style="color:#22c55e">增长+14.5%</b>（92,243→105,609张/天），钻石兑换降低了获取门槛，刺激了更多消费需求。<br><br>
+钻石消耗方面，<b style="color:#f59e0b">上线初期存量钻石消耗冲高非常明显</b>（1月峰值日均27万），随后逐渐平缓回落至3月日均9.6万。<b style="color:#e0e0e0">每日实收率仍低于100%，但正在逐步上升</b>（1月~19% → 3月~54%），存量正在减少。<br>
+注：游戏内除直充外，广告和其他活动也会产出钻石，因此实收率不会完全达到100%。
+</p>
 </div>
-
-<!-- ==================== 五、道具卡流出与钻石消耗 ==================== -->
-<h2 id="sec5" style="font-size:20px;margin:28px 0 16px;padding-left:12px;border-left:4px solid #60a5fa;color:#60a5fa">五、道具卡流出与钻石消耗</h2>
-
-<div class="section">
-<h2>📦 道具卡流出总量趋势（新老版本合计）</h2>
-<div class="desc">每日道具卡总流出量和获取人数（7日均）。数据含现金购买、钻石兑换、广告获取等全渠道</div>
-<div id="chartFlowTotal" class="chart-box tall"></div>
-</div>
-
+<div class="section"><h2>📦 道具卡流出总量趋势（新老版本合计）</h2><div class="desc">上线后流出增长+14.5%，钻石兑换刺激了更多道具卡消费需求</div><div id="chartFlowTotal" class="chart-box tall"></div></div>
 <div class="two-col">
-<div class="section">
-<h2>💎 道具卡钻石消耗趋势</h2>
-<div class="desc">每日消耗钻石数量（7日均），虚线=上线前基线。基线以上部分为新版本道具卡兑换</div>
-<div id="chartFlowGems" class="chart-box"></div>
+<div class="section"><h2>💎 道具卡钻石消耗趋势</h2><div class="desc">初期存量冲高明显，随后逐步回落。虚线=上线前基线</div><div id="chartFlowGems" class="chart-box"></div></div>
+<div class="section"><h2>📊 道具卡流出构成拆分</h2><div class="desc">现金购买(28.4%) + 钻石兑换净增(10.8%) + 其他广告等(60.8%)</div><div id="chartFlowBreak" class="chart-box"></div></div>
 </div>
-<div class="section">
-<h2>📊 道具卡流出构成拆分</h2>
-<div class="desc">上线后流出来源：现金购买(28.4%) + 钻石兑换净增(10.8%) + 其他广告等(60.8%)</div>
-<div id="chartFlowBreak" class="chart-box"></div>
-</div>
-</div>
-
 <div class="two-col">
-<div class="section">
-<h2>💵 道具卡钻石兑换：应收 vs 实收（7日均）</h2>
-<div class="desc">应收=如果消耗的钻石全部现金购买的收入（加权单价$0.00228/钻），实收=新版本钻石实际收入</div>
-<div id="chartGemsRev" class="chart-box"></div>
-</div>
-<div class="section">
-<h2>📈 每日实收率趋势（7日均）</h2>
-<div class="desc">每日实收/应收的比率（7日移动平均）。反映钻石存量消耗进度，趋近100%意味着存量耗尽</div>
-<div id="chartGemsRate" class="chart-box"></div>
-</div>
+<div class="section"><h2>💵 钻石兑换：应收 vs 实收（7日均）</h2><div class="desc">应收=钻石消耗折算为现金（$0.00228/钻），实收=新版本钻石实际收入</div><div id="chartGemsRev" class="chart-box"></div></div>
+<div class="section"><h2>📈 每日实收率趋势（7日均）</h2><div class="desc">1月~19%逐步升至3月~54%，存量减少中但仍有非直充钻石产出</div><div id="chartGemsRate" class="chart-box"></div></div>
 </div>
 
-<!-- ==================== 六、关联品类分析 ==================== -->
-<h2 id="sec6" style="font-size:20px;margin:28px 0 16px;padding-left:12px;border-left:4px solid #888;color:#aaa">六、关联品类分析</h2>
-
+<!-- 2.4 关联品类 -->
+<h3 id="sec3d" class="ch-sub" style="color:#888">2.4 关联品类分析</h3>
 <div class="note" style="border-left-color:#888">
-<h3>📌 分析逻辑</h3>
-<p>
-道具卡改为钻石兑换后，玩家的道具卡需求是否分流到了其他含道具卡/钻石的商品？重点关注两个品类：<br>
-• <b>空投礼包 (gift_1006)</b>：含50,000金币 + 400宝石 + 30道具卡，性价比拉满<br>
-• <b>无尽礼包 (endlessgift系列)</b>：多档位礼包，部分含钻石<br>
-结论：两者上线后均下降，<b>未承接道具卡分流需求</b>。
+<h3 style="color:#aaa">📌 分析逻辑</h3>
+<p style="font-size:13px">
+道具卡改为钻石兑换后，是否有需求分流到含道具卡/钻石的其他商品？<br>
+• <b style="color:#e0e0e0">空投礼包 (gift_1006)</b>：含50,000金币 + 400宝石 + 30道具卡<br>
+• <b style="color:#e0e0e0">无尽礼包 (endlessgift系列)</b>：多档位礼包，部分含钻石<br><br>
+<b style="color:#e0e0e0">结论：两者在改版前后均未出现增长（分别-19.5%和-13%），道具卡需求并未分流到这些品类。</b>
 </p>
 </div>
-
 <div class="two-col">
-<div class="section">
-<h2>🎁 空投礼包 (gift_1006) 售卖趋势</h2>
-<div class="desc">含50,000金币+400宝石+30道具卡。稳态基准$52/天，上线后$42/天（-19.5%）</div>
-<div id="chartGift" class="chart-box"></div>
-</div>
-<div class="section">
-<h2>🎁 无尽礼包 (endlessgift) 售卖趋势</h2>
-<div class="desc">多档位无尽礼包系列（含钻石）。稳态基准$217/天，上线后$189/天（-13%）</div>
-<div id="chartEndless" class="chart-box"></div>
-</div>
+<div class="section"><h2>🎁 空投礼包 (gift_1006)</h2><div class="desc">含50,000金币+400宝石+30道具卡。稳态$52/天 → 上线后$42/天（-19.5%）</div><div id="chartGift" class="chart-box"></div></div>
+<div class="section"><h2>🎁 无尽礼包 (endlessgift)</h2><div class="desc">多档位（含钻石）。稳态$217/天 → 上线后$189/天（-13%）</div><div id="chartEndless" class="chart-box"></div></div>
 </div>
 
-<!-- ==================== 七、综合等效收入 ==================== -->
-<h2 id="sec7" style="font-size:20px;margin:28px 0 16px;padding-left:12px;border-left:4px solid #a78bfa;color:#a78bfa">七、综合等效收入</h2>
-<div id="chartCombined" class="chart-box tall"></div>
-</div>
+<!-- 2.5 综合等效收入 -->
+<h3 id="sec3e" class="ch-sub" style="color:#a78bfa">2.5 综合等效收入</h3>
+<div class="section"><h2>🔄 综合等效收入 vs 趋势预测</h2><div class="desc">道具卡现金+钻石道具卡部分+空投礼包增量+无尽礼包增量 = 等效总收入</div><div id="chartCombined" class="chart-box tall"></div></div>
+<div class="section"><h2>📋 月度综合汇总</h2><div class="desc">按月查看各项关键指标</div><div style="overflow-x:auto"><table id="tblMonthly"></table></div></div>
 
-<!-- 月度表 -->
-<div class="section">
-<h2>📋 月度综合汇总</h2>
-<div class="desc">按月查看各项关键指标</div>
-<div style="overflow-x:auto"><table id="tblMonthly"></table></div>
+<!-- 2.6 全量预测 -->
+<h3 id="sec3f" class="ch-sub" style="color:#ec4899">2.6 新版本全量后的收入影响预测</h3>
+<div class="note" style="border-left-color:#ec4899">
+<h3 style="color:#ec4899">🔮 全量预测</h3>
+<p style="font-size:13px" id="forecast"></p>
 </div>
 
 </div>
@@ -247,356 +188,211 @@ const D = {"chart_ver": {"dates": ["2025-12-02", "2025-12-03", "2025-12-04", "20
 const K = D.kpi;
 const C = {bg:'transparent',text:'#e0e0e0',sub:'#888',grid:'#2a2d3e',green:'#22c55e',red:'#ef4444',blue:'#60a5fa',purple:'#a78bfa',orange:'#f59e0b',cyan:'#06b6d4',pink:'#ec4899',yellow:'#eab308'};
 const colorMap = {'商城购买道具卡':'#22c55e','商城购买钻石':'#60a5fa','空投礼包':'#06b6d4','无尽礼包':'#a78bfa','限时破产金币礼包':'#f97316','幸运金币礼包':'#ec4899','商城购买金币':'#eab308'};
-// 固定排序：从下到上
 const STACK_ORDER = ['商城购买道具卡','商城购买钻石','空投礼包','无尽礼包','限时破产金币礼包','幸运金币礼包','商城购买金币'];
 const VERSION_MAP = {'商城购买道具卡':'🟢老版本','商城购买钻石':'⚪新老都有','空投礼包':'⚪新老都有','无尽礼包':'⚪新老都有','限时破产金币礼包':'🔵新版本','幸运金币礼包':'🔵新版本','商城购买金币':'⚪新老都有'};
 
-function base(extra){
-  return Object.assign({backgroundColor:C.bg,textStyle:{color:C.text,fontFamily:'-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif'},
+function base(){
+  return {backgroundColor:C.bg,textStyle:{color:C.text,fontFamily:'-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif'},
     grid:{left:60,right:20,top:50,bottom:40},
     tooltip:{trigger:'axis',backgroundColor:'#1e2030',borderColor:'#3a3d5e',textStyle:{color:'#e0e0e0',fontSize:11}},
     legend:{textStyle:{color:'#888',fontSize:10},top:5,itemGap:12},
     xAxis:{type:'category',axisLine:{lineStyle:{color:C.grid}},axisLabel:{color:C.sub,fontSize:9,rotate:30},splitLine:{show:false}},
     yAxis:{type:'value',axisLine:{show:false},axisLabel:{color:C.sub,fontSize:10},splitLine:{lineStyle:{color:C.grid,type:'dashed'}}}
-  },extra||{});
+  };
 }
-function ml(xVal,color){return{silent:true,symbol:'none',lineStyle:{type:'solid',color:color||C.red,width:1.5},data:[{xAxis:xVal,label:{formatter:'新版本上线',color:C.red,fontSize:9}}]};}
+function ml(x){return{silent:true,symbol:'none',lineStyle:{type:'solid',color:C.red,width:1.5},data:[{xAxis:x,label:{formatter:'新版本上线',color:C.red,fontSize:9}}]};}
 function init(id){return echarts.init(document.getElementById(id));}
 
-// KPI
-document.getElementById('kpi1').textContent = ((K.ic_after_avg/K.ic_pred_avg-1)*100).toFixed(1)+'%';
-document.getElementById('kpi1d').textContent = `实际 $${K.ic_after_avg} / 预测 $${K.ic_pred_avg}`;
-document.getElementById('kpi2').textContent = K.equiv_vs_pred_pct+'%';
-document.getElementById('kpi2d').textContent = `等效 $${K.equiv_avg} / 预测 $${K.ic_pred_avg}，缺口 $${Math.abs(K.total_gap).toLocaleString()}`;
-document.getElementById('kpi3').textContent = '$'+K.gems_ic_daily;
-document.getElementById('kpi3d').textContent = `钻石 $${K.gems_ic_daily} + gift增量 $${K.gift_inc_daily} + endlessgift增量 $${K.endless_inc_daily}`;
-document.getElementById('kpi4').textContent = K.latest_new_pct+'%';
-document.getElementById('kpi4d').textContent = '新版本用户占全部活跃用户比例';
+// 结论（修正版）
+(function(){
+  const ul=document.getElementById('conclusions');
+  const gr=D.chart_gems_rev||{};
+  const items=[
+    {tag:'整体收入',cls:'tag-green',text:'<b style="color:#22c55e">道具卡收入占总直购收入35~42%，远超预期</b>，是仅次于金币的第二大收入来源。金币+道具卡合计占比近80%，任何对道具卡的调整都会显著影响整体收入。'},
+    {tag:'核心判断',cls:'tag-yellow',text:'<b style="color:#f59e0b">道具卡改钻石兑换的机制本身是正向的，当前收入缺口完全由玩家钻石存量造成。</b>按应收口径（钻石消耗全部折算为现金），等效总收入约$129,408，<b style="color:#22c55e">超出趋势预测+13.5%</b>。但实际因62%的钻石消耗来自存量未产生收入，导致实收口径缺口'+K.equiv_vs_pred_pct+'%。实收率正在逐步上升（1月19%→3月54%），收入将逐步回归应收水平。'},
+    {tag:'全量风险',cls:'tag-red',text:'<b style="color:#ef4444">⚠️ 如果新版本全量覆盖，道具卡收入将完全依赖钻石购买转化。</b>目前新版本仅覆盖~21%用户，道具卡现金收入主要来自80%的老版本用户。全量后，道具卡现金直购收入将降为0，全部转为钻石兑换。在存量未消耗完的过渡期，收入损失将显著扩大。'},
+    {tag:'建议',cls:'tag-blue',text:'<b>建议：</b>① 持续监控实收率趋势，评估存量消耗进度；② 全量推送前需评估剩余钻石存量规模；③ 考虑设计过渡期运营策略（限时折扣加速存量消耗）；④ 关注全量后钻石购买转化率是否能覆盖道具卡收入需求。'},
+  ];
+  items.forEach(it=>{const li=document.createElement('li');li.innerHTML='<span class="tag '+it.cls+'">'+it.tag+'</span>'+it.text;ul.appendChild(li);});
+})();
+
+// 全量预测
+(function(){
+  const el=document.getElementById('forecast');
+  const gr=D.chart_gems_rev||{};
+  // 当前数据：新版本~21%，道具卡现金日均~$838（主要来自80%老版本用户）
+  // 如果全量：老版本道具卡收入→0，全部转为钻石兑换
+  // 当前新版本钻石日均应收~$350（基于21%用户产出），全量放大到100%
+  // 预估全量钻石应收 ≈ 当前应收 / 0.21 ≈ $350/0.21 ≈ $1,667/天
+  // 当前道具卡现金+钻石实收 ≈ $838+$112 = $950/天
+  // 全量后如果实收率维持54%（3月水平）：实收≈$1,667*54%=$900
+  // 全量后如果实收率提升到70%：实收≈$1,667*70%=$1,167
+  const curDailyShould = (gr.total_should||36792)/105;
+  const fullShould = curDailyShould / 0.21;
+  const rate54 = fullShould * 0.54;
+  const rate70 = fullShould * 0.70;
+  const rate90 = fullShould * 0.90;
+  el.innerHTML = `
+当前新版本覆盖约<b style="color:#60a5fa">21%</b>用户，道具卡现金收入主要来自<b style="color:#e0e0e0">80%的老版本用户</b>（日均~$838）。<br><br>
+<b style="color:#e0e0e0">如果新版本全量覆盖（100%）：</b><br>
+• 道具卡现金直购收入将<b style="color:#ef4444">降为$0</b>（所有用户改为钻石兑换）<br>
+• 钻石兑换应收预估（按当前消耗强度等比外推）：<b style="color:#f59e0b">~$${Math.round(fullShould).toLocaleString()}/天</b><br><br>
+<b style="color:#e0e0e0">实收预测（取决于实收率）：</b><br>
+• 实收率54%（当前3月水平）：日均 <b style="color:#ef4444">~$${Math.round(rate54).toLocaleString()}</b>，vs 当前总收入$950 → <span style="color:#ef4444">收入下降约5%</span><br>
+• 实收率70%（存量进一步消耗）：日均 <b style="color:#f59e0b">~$${Math.round(rate70).toLocaleString()}</b> → <span style="color:#22c55e">收入增长约23%</span><br>
+• 实收率90%（存量基本耗尽）：日均 <b style="color:#22c55e">~$${Math.round(rate90).toLocaleString()}</b> → <span style="color:#22c55e">收入增长约58%</span><br><br>
+<b style="color:#ef4444">⚠️ 关键风险：全量推送初期，由于大量老版本用户首次获得钻石兑换入口，可能出现类似当前1月的存量消耗冲高，在过渡期造成显著收入损失。建议全量前充分评估全服钻石存量规模。</b>
+  `;
+})();
+
+// === 图表渲染 ===
 
 // 版本覆盖
 (function(){
-  const d=D.chart_ver,o=base();
-  o.xAxis.data=d.dates;
+  const d=D.chart_ver,o=base();o.xAxis.data=d.dates;
   o.legend.data=['新版本用户','老版本用户','新版本占比(%)'];
-  o.yAxis=[{type:'value',name:'用户数',axisLine:{show:false},axisLabel:{color:C.sub,fontSize:10},splitLine:{lineStyle:{color:C.grid,type:'dashed'}}},
-    {type:'value',name:'占比(%)',max:30,axisLine:{show:false},axisLabel:{color:C.sub,fontSize:10},splitLine:{show:false}}];
+  o.yAxis=[{type:'value',name:'用户数',axisLine:{show:false},axisLabel:{color:C.sub,fontSize:10},splitLine:{lineStyle:{color:C.grid,type:'dashed'}}},{type:'value',name:'占比(%)',max:30,axisLine:{show:false},axisLabel:{color:C.sub,fontSize:10},splitLine:{show:false}}];
   o.series=[
     {name:'老版本用户',type:'bar',stack:'v',data:d.old_users,barWidth:3,itemStyle:{color:'rgba(136,136,136,0.4)'},yAxisIndex:0},
     {name:'新版本用户',type:'bar',stack:'v',data:d.new_users,barWidth:3,itemStyle:{color:'rgba(96,165,250,0.6)'},yAxisIndex:0},
     {name:'新版本占比(%)',type:'line',data:d.new_pct,smooth:true,showSymbol:false,lineStyle:{width:2.5,color:C.green},yAxisIndex:1},
-  ];
-  init('chartVer').setOption(o);
+  ];init('chartVer').setOption(o);
 })();
 
-// 直购收入构成-日度（颜色通过 color 数组全局绑定）
+// 直购收入-日度
 (function(){
-  const d=D.chart_rev_v3,o=base();
-  o.xAxis.data=d.dates;o.yAxis.name='流水(美元·7日均)';
+  const d=D.chart_rev_v3,o=base();o.xAxis.data=d.dates;o.yAxis.name='流水(美元·7日均)';
   o.color=STACK_ORDER.map(t=>colorMap[t]);
-  // 图例：金币在最前（顶部），道具卡在最后
   o.legend={data:STACK_ORDER.slice().reverse(),textStyle:{color:'#888',fontSize:10},top:5,itemGap:12,icon:'rect',itemWidth:14,itemHeight:10};
-  // tooltip：按固定顺序（金币在上道具卡在下）
-  o.tooltip.formatter=function(params){
-    let s='<div style="font-size:12px;font-weight:600;margin-bottom:4px">'+params[0].axisValue+'</div>';
-    const m={};params.forEach(p=>{m[p.seriesName]=p;});
-    STACK_ORDER.slice().reverse().forEach(t=>{
-      const p=m[t];if(p&&p.value>0.01)s+='<span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:'+colorMap[t]+';margin-right:5px"></span>'+t+': <b>'+p.value.toFixed(2)+'</b><br>';
-    });
-    return s;
-  };
-  o.series=STACK_ORDER.map((t,i)=>({name:t,type:'line',stack:'rev',data:d[t],smooth:true,showSymbol:false,
-    lineStyle:{width:0},areaStyle:{opacity:0.8},
-    itemStyle:{color:colorMap[t]}}));
-  o.series[0].markLine=ml('2025-12-18');
-  init('chartRev').setOption(o);
+  o.tooltip.formatter=function(p){let s='<div style="font-size:12px;font-weight:600;margin-bottom:4px">'+p[0].axisValue+'</div>';const m={};p.forEach(x=>{m[x.seriesName]=x;});STACK_ORDER.slice().reverse().forEach(t=>{const x=m[t];if(x&&x.value>0.01)s+='<span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:'+colorMap[t]+';margin-right:5px"></span>'+t+': <b>'+x.value.toFixed(2)+'</b><br>';});return s;};
+  o.series=STACK_ORDER.map(t=>({name:t,type:'line',stack:'rev',data:d[t],smooth:true,showSymbol:false,lineStyle:{width:0},areaStyle:{opacity:0.8},itemStyle:{color:colorMap[t]}}));
+  o.series[0].markLine=ml('2025-12-18');init('chartRev').setOption(o);
 })();
 
 // 直购收入-月度
 (function(){
-  const d=D.chart_monthly_v3,o=base();
-  o.xAxis.data=d.months;o.yAxis.name='流水(美元)';
+  const d=D.chart_monthly_v3,o=base();o.xAxis.data=d.months;o.yAxis.name='流水(美元)';
   o.color=STACK_ORDER.map(t=>colorMap[t]);
   o.legend={data:STACK_ORDER.slice().reverse(),textStyle:{color:'#888',fontSize:10},top:5,itemGap:12,icon:'rect',itemWidth:14,itemHeight:10};
-  o.tooltip.formatter=function(params){
-    let s='<div style="font-size:12px;font-weight:600;margin-bottom:4px">'+params[0].axisValue+'</div>';
-    const m={};params.forEach(p=>{m[p.seriesName]=p;});
-    STACK_ORDER.slice().reverse().forEach(t=>{
-      const p=m[t];if(p&&p.value>0)s+='<span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:'+colorMap[t]+';margin-right:5px"></span>'+t+': <b>$'+Math.round(p.value).toLocaleString()+'</b><br>';
-    });
-    return s;
-  };
+  o.tooltip.formatter=function(p){let s='<div style="font-size:12px;font-weight:600;margin-bottom:4px">'+p[0].axisValue+'</div>';const m={};p.forEach(x=>{m[x.seriesName]=x;});STACK_ORDER.slice().reverse().forEach(t=>{const x=m[t];if(x&&x.value>0)s+='<span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:'+colorMap[t]+';margin-right:5px"></span>'+t+': <b>$'+Math.round(x.value).toLocaleString()+'</b><br>';});return s;};
   o.series=STACK_ORDER.map(t=>({name:t,type:'bar',stack:'rev',data:d[t],barWidth:30,itemStyle:{color:colorMap[t]}}));
   init('chartRevM').setOption(o);
 })();
 
-// 直购收入-百分比变化
+// 直购收入-百分比
 (function(){
-  const d=D.chart_pct_v3,o=base();
-  o.xAxis.data=d.dates;o.yAxis.name='占比(%)';o.yAxis.max=100;
+  const d=D.chart_pct_v3,o=base();o.xAxis.data=d.dates;o.yAxis.name='占比(%)';o.yAxis.max=100;
   o.color=STACK_ORDER.map(t=>colorMap[t]);
   o.legend={data:STACK_ORDER.slice().reverse(),textStyle:{color:'#888',fontSize:10},top:5,itemGap:12,icon:'rect',itemWidth:14,itemHeight:10};
   o.grid={left:60,right:20,top:50,bottom:40};
-  o.tooltip.formatter=function(params){
-    let s='<div style="font-size:12px;font-weight:600;margin-bottom:4px">'+params[0].axisValue+'</div>';
-    const m={};params.forEach(p=>{m[p.seriesName]=p;});
-    STACK_ORDER.slice().reverse().forEach(t=>{
-      const p=m[t];if(p&&p.value>0.05)s+='<span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:'+colorMap[t]+';margin-right:5px"></span>'+t+': <b>'+p.value.toFixed(1)+'%</b><br>';
-    });
-    return s;
-  };
-  o.series=STACK_ORDER.map(t=>({
-    name:t,type:'line',stack:'pct',data:d[t],smooth:true,showSymbol:false,
-    lineStyle:{width:0},areaStyle:{opacity:0.85},itemStyle:{color:colorMap[t]},
-    emphasis:{focus:'series'}
-  }));
-  o.series[0].markLine=ml('2025-12-18');
-  init('chartRevPct').setOption(o);
+  o.tooltip.formatter=function(p){let s='<div style="font-size:12px;font-weight:600;margin-bottom:4px">'+p[0].axisValue+'</div>';const m={};p.forEach(x=>{m[x.seriesName]=x;});STACK_ORDER.slice().reverse().forEach(t=>{const x=m[t];if(x&&x.value>0.05)s+='<span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:'+colorMap[t]+';margin-right:5px"></span>'+t+': <b>'+x.value.toFixed(1)+'%</b><br>';});return s;};
+  o.series=STACK_ORDER.map(t=>({name:t,type:'line',stack:'pct',data:d[t],smooth:true,showSymbol:false,lineStyle:{width:0},areaStyle:{opacity:0.85},itemStyle:{color:colorMap[t]},emphasis:{focus:'series'}}));
+  o.series[0].markLine=ml('2025-12-18');init('chartRevPct').setOption(o);
 })();
 
 // 收入明细表
 (function(){
-  const d=D.chart_monthly_v3;
-  // 从综合分析数据获取版本占比（如果存在）
-  const cm=D.chart_monthly||{};
-  const newPctArr=cm.new_pct||d.months.map(()=>0);
+  const d=D.chart_monthly_v3,cm=D.chart_monthly||{},np=cm.new_pct||d.months.map(()=>0);
   let h='<thead><tr><th>月份</th>';
-  STACK_ORDER.forEach(t=>{
-    h+='<th><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:'+colorMap[t]+';margin-right:4px"></span>'+t+'<br><span style="font-size:10px;color:#666">'+VERSION_MAP[t]+'</span></th>';
-  });
+  STACK_ORDER.forEach(t=>{h+='<th><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:'+colorMap[t]+';margin-right:4px"></span>'+t+'<br><span style="font-size:10px;color:#666">'+VERSION_MAP[t]+'</span></th>';});
   h+='<th>总计</th></tr></thead><tbody>';
   for(let i=0;i<d.months.length;i++){
-    const np=(newPctArr[i]||0)/100, op=1-np;
-    h+='<tr><td>'+d.months[i]+'</td>';
-    STACK_ORDER.forEach(t=>{
-      const val=d[t][i];
-      const pct=d[t+'_pct']?d[t+'_pct'][i]:0;
-      const vb=VERSION_MAP[t];
-      let coverLabel='全版本';
-      if(vb.includes('老版本')) coverLabel='覆盖'+(op*100).toFixed(0)+'%';
-      else if(vb.includes('新版本')) coverLabel='覆盖'+(np*100).toFixed(0)+'%';
-      h+='<td>$'+Math.round(val).toLocaleString()+'<br><span style="font-size:10px;color:#888">'+pct+'%</span><br><span style="font-size:9px;color:#555">'+coverLabel+'</span></td>';
-    });
-    h+='<td style="font-weight:600">$'+Math.round(d.total[i]).toLocaleString()+'</td></tr>';
-  }
-  h+='</tbody>';
-  document.getElementById('tblRevDetail').innerHTML=h;
+    const n=(np[i]||0)/100,op=1-n;h+='<tr><td>'+d.months[i]+'</td>';
+    STACK_ORDER.forEach(t=>{const v=d[t][i],p=d[t+'_pct']?d[t+'_pct'][i]:0,vm=VERSION_MAP[t];
+      let cl='全版本';if(vm.includes('老版本'))cl='覆盖'+(op*100).toFixed(0)+'%';else if(vm.includes('新版本'))cl='覆盖'+(n*100).toFixed(0)+'%';
+      h+='<td>$'+Math.round(v).toLocaleString()+'<br><span style="font-size:10px;color:#888">'+p+'%</span><br><span style="font-size:9px;color:#555">'+cl+'</span></td>';});
+    h+='<td style="font-weight:600">$'+Math.round(d.total[i]).toLocaleString()+'</td></tr>';}
+  document.getElementById('tblRevDetail').innerHTML=h+'</tbody>';
 })();
 
 // 道具卡
 (function(){
-  const d=D.chart_ic,o=base();
-  o.xAxis.data=d.dates;o.yAxis.name='流水(美元)';
+  const d=D.chart_ic,o=base();o.xAxis.data=d.dates;o.yAxis.name='流水(美元)';
   o.legend.data=['每日流水','7日均线','趋势预测'];
-  o.series=[
-    {name:'每日流水',type:'bar',data:d.actual,barWidth:2,itemStyle:{color:'rgba(96,165,250,0.2)'},z:1},
-    {name:'7日均线',type:'line',data:d.ma7,smooth:true,showSymbol:false,lineStyle:{width:2.5,color:C.blue},z:3},
-    {name:'趋势预测',type:'line',data:d.predicted,showSymbol:false,lineStyle:{width:2,type:'dashed',color:C.orange},z:2},
-  ];
-  o.series[0].markLine=ml('2025-12-18');
-  init('chartIC').setOption(o);
+  o.series=[{name:'每日流水',type:'bar',data:d.actual,barWidth:2,itemStyle:{color:'rgba(96,165,250,0.2)'},z:1},{name:'7日均线',type:'line',data:d.ma7,smooth:true,showSymbol:false,lineStyle:{width:2.5,color:C.blue},z:3},{name:'趋势预测',type:'line',data:d.predicted,showSymbol:false,lineStyle:{width:2,type:'dashed',color:C.orange},z:2}];
+  o.series[0].markLine=ml('2025-12-18');init('chartIC').setOption(o);
 })();
 
 // 道具卡分规格
 (function(){
-  const d=D.chart_ic_spec,o=base();
-  const specColors=['#22c55e','#60a5fa','#a78bfa'];
-  const specColorsBuyer=['#86efac','#93c5fd','#c4b5fd'];
-  o.xAxis.data=d.dates;
-  o.yAxis=[
-    {type:'value',name:'流水(美元·7日均)',axisLine:{show:false},axisLabel:{color:C.sub,fontSize:10},splitLine:{lineStyle:{color:C.grid,type:'dashed'}}},
-    {type:'value',name:'购买人数(7日均)',axisLine:{show:false},axisLabel:{color:C.sub,fontSize:10},splitLine:{show:false}}
-  ];
+  const d=D.chart_ic_spec,o=base(),sc=['#22c55e','#60a5fa','#a78bfa'],sb=['#86efac','#93c5fd','#c4b5fd'];
+  o.xAxis.data=d.dates;o.yAxis=[{type:'value',name:'流水(美元·7日均)',axisLine:{show:false},axisLabel:{color:C.sub,fontSize:10},splitLine:{lineStyle:{color:C.grid,type:'dashed'}}},{type:'value',name:'购买人数(7日均)',axisLine:{show:false},axisLabel:{color:C.sub,fontSize:10},splitLine:{show:false}}];
   o.legend.data=[];o.series=[];
-  d.specs.forEach((s,i)=>{
-    o.legend.data.push(s.label+' 流水');
-    o.legend.data.push(s.label+' 人数');
-    o.series.push({name:s.label+' 流水',type:'line',data:s.revenue_ma7,smooth:true,showSymbol:false,lineStyle:{width:2,color:specColors[i]},yAxisIndex:0});
-    o.series.push({name:s.label+' 人数',type:'line',data:s.buyers_ma7,smooth:true,showSymbol:false,lineStyle:{width:1.5,type:'dashed',color:specColorsBuyer[i]},yAxisIndex:1});
-  });
-  o.series[0].markLine=ml('2025-12-18');
-  o.legend.textStyle={color:'#888',fontSize:9};
-  o.grid={left:60,right:70,top:60,bottom:40};
-  init('chartICSpec').setOption(o);
+  d.specs.forEach((s,i)=>{o.legend.data.push(s.label+' 流水',s.label+' 人数');o.series.push({name:s.label+' 流水',type:'line',data:s.revenue_ma7,smooth:true,showSymbol:false,lineStyle:{width:2,color:sc[i]},yAxisIndex:0},{name:s.label+' 人数',type:'line',data:s.buyers_ma7,smooth:true,showSymbol:false,lineStyle:{width:1.5,type:'dashed',color:sb[i]},yAxisIndex:1});});
+  o.series[0].markLine=ml('2025-12-18');o.legend.textStyle={color:'#888',fontSize:9};o.grid={left:60,right:70,top:60,bottom:40};init('chartICSpec').setOption(o);
 })();
 
-// 道具卡流出-总量
-(function(){
-  if(!D.chart_flow) return;
-  const d=D.chart_flow,o=base();
-  o.xAxis.data=d.dates;
-  o.yAxis=[{type:'value',name:'道具卡张数(7日均)',axisLine:{show:false},axisLabel:{color:C.sub,fontSize:10},splitLine:{lineStyle:{color:C.grid,type:'dashed'}}},
-    {type:'value',name:'获取人数(7日均)',axisLine:{show:false},axisLabel:{color:C.sub,fontSize:10},splitLine:{show:false}}];
+// 流出-总量
+(function(){if(!D.chart_flow)return;const d=D.chart_flow,o=base();o.xAxis.data=d.dates;
+  o.yAxis=[{type:'value',name:'道具卡张数(7日均)',axisLine:{show:false},axisLabel:{color:C.sub,fontSize:10},splitLine:{lineStyle:{color:C.grid,type:'dashed'}}},{type:'value',name:'获取人数(7日均)',axisLine:{show:false},axisLabel:{color:C.sub,fontSize:10},splitLine:{show:false}}];
   o.legend={data:['道具卡流出量','获取人数'],textStyle:{color:'#888',fontSize:10},top:5,icon:'rect',itemWidth:14,itemHeight:10};
-  o.series=[
-    {name:'道具卡流出量',type:'line',data:d.total_cards_ma7,smooth:true,showSymbol:false,lineStyle:{width:2.5,color:C.green},itemStyle:{color:C.green},
-     areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(34,197,94,0.25)'},{offset:1,color:'rgba(34,197,94,0)'}]}},yAxisIndex:0},
-    {name:'获取人数',type:'line',data:d.users_ma7,smooth:true,showSymbol:false,lineStyle:{width:2,type:'dashed',color:C.cyan},itemStyle:{color:C.cyan},yAxisIndex:1},
-  ];
-  o.series[0].markLine=ml('2025-12-18');
-  o.grid={left:60,right:70,top:50,bottom:40};
-  init('chartFlowTotal').setOption(o);
+  o.series=[{name:'道具卡流出量',type:'line',data:d.total_cards_ma7,smooth:true,showSymbol:false,lineStyle:{width:2.5,color:C.green},itemStyle:{color:C.green},areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(34,197,94,0.25)'},{offset:1,color:'rgba(34,197,94,0)'}]}},yAxisIndex:0},{name:'获取人数',type:'line',data:d.users_ma7,smooth:true,showSymbol:false,lineStyle:{width:2,type:'dashed',color:C.cyan},itemStyle:{color:C.cyan},yAxisIndex:1}];
+  o.series[0].markLine=ml('2025-12-18');o.grid={left:60,right:70,top:50,bottom:40};init('chartFlowTotal').setOption(o);
 })();
 
-// 道具卡流出-钻石消耗
-(function(){
-  if(!D.chart_flow) return;
-  const d=D.chart_flow,o=base();
-  o.xAxis.data=d.dates;o.yAxis.name='钻石数量(7日均)';
+// 流出-钻石消耗
+(function(){if(!D.chart_flow)return;const d=D.chart_flow,o=base();o.xAxis.data=d.dates;o.yAxis.name='钻石数量(7日均)';
   o.legend={data:['钻石消耗','上线前基线'],textStyle:{color:'#888',fontSize:10},top:5,icon:'rect',itemWidth:14,itemHeight:10};
-  o.series=[
-    {name:'钻石消耗',type:'line',data:d.gems_consumed_ma7,smooth:true,showSymbol:false,lineStyle:{width:2.5,color:C.blue},itemStyle:{color:C.blue},
-     areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(96,165,250,0.3)'},{offset:1,color:'rgba(96,165,250,0)'}]}}},
-    {name:'上线前基线',type:'line',data:d.dates.map(()=>d.gems_baseline),showSymbol:false,lineStyle:{width:1.5,type:'dashed',color:C.orange},itemStyle:{color:C.orange}},
-  ];
-  o.series[0].markLine=ml('2025-12-18');
-  init('chartFlowGems').setOption(o);
+  o.series=[{name:'钻石消耗',type:'line',data:d.gems_consumed_ma7,smooth:true,showSymbol:false,lineStyle:{width:2.5,color:C.blue},itemStyle:{color:C.blue},areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(96,165,250,0.3)'},{offset:1,color:'rgba(96,165,250,0)'}]}}},{name:'上线前基线',type:'line',data:d.dates.map(()=>d.gems_baseline),showSymbol:false,lineStyle:{width:1.5,type:'dashed',color:C.orange},itemStyle:{color:C.orange}}];
+  o.series[0].markLine=ml('2025-12-18');init('chartFlowGems').setOption(o);
 })();
 
-// 道具卡流出-构成拆分
-(function(){
-  if(!D.chart_flow) return;
-  const d=D.chart_flow,o=base();
-  o.xAxis.data=d.dates;o.yAxis.name='道具卡张数(7日均)';
-  o.color=[C.green,C.blue,'#888'];
-  o.legend={data:['现金购买','钻石兑换(净)','其他(广告等)'],textStyle:{color:'#888',fontSize:10},top:5,icon:'rect',itemWidth:14,itemHeight:10};
-  o.series=[
-    {name:'现金购买',type:'line',stack:'fc',data:d.cash_cards_ma7,smooth:true,showSymbol:false,lineStyle:{width:0},areaStyle:{opacity:0.8},itemStyle:{color:C.green}},
-    {name:'钻石兑换(净)',type:'line',stack:'fc',data:d.gems_cards_net_ma7,smooth:true,showSymbol:false,lineStyle:{width:0},areaStyle:{opacity:0.8},itemStyle:{color:C.blue}},
-    {name:'其他(广告等)',type:'line',stack:'fc',data:d.other_cards_net_ma7,smooth:true,showSymbol:false,lineStyle:{width:0},areaStyle:{opacity:0.8},itemStyle:{color:'#888'}},
-  ];
-  o.series[0].markLine=ml('2025-12-18');
-  init('chartFlowBreak').setOption(o);
+// 流出-构成
+(function(){if(!D.chart_flow)return;const d=D.chart_flow,o=base();o.xAxis.data=d.dates;o.yAxis.name='道具卡张数(7日均)';
+  o.color=[C.green,C.blue,'#888'];o.legend={data:['现金购买','钻石兑换(净)','其他(广告等)'],textStyle:{color:'#888',fontSize:10},top:5,icon:'rect',itemWidth:14,itemHeight:10};
+  o.series=[{name:'现金购买',type:'line',stack:'fc',data:d.cash_cards_ma7,smooth:true,showSymbol:false,lineStyle:{width:0},areaStyle:{opacity:0.8},itemStyle:{color:C.green}},{name:'钻石兑换(净)',type:'line',stack:'fc',data:d.gems_cards_net_ma7,smooth:true,showSymbol:false,lineStyle:{width:0},areaStyle:{opacity:0.8},itemStyle:{color:C.blue}},{name:'其他(广告等)',type:'line',stack:'fc',data:d.other_cards_net_ma7,smooth:true,showSymbol:false,lineStyle:{width:0},areaStyle:{opacity:0.8},itemStyle:{color:'#888'}}];
+  o.series[0].markLine=ml('2025-12-18');init('chartFlowBreak').setOption(o);
 })();
 
-// 钻石应收 vs 实收
-(function(){
-  if(!D.chart_gems_rev) return;
-  const d=D.chart_gems_rev,o=base();
-  o.xAxis.data=d.dates;o.yAxis.name='流水(美元·7日均)';
+// 应收vs实收
+(function(){if(!D.chart_gems_rev)return;const d=D.chart_gems_rev,o=base();o.xAxis.data=d.dates;o.yAxis.name='流水(美元·7日均)';
   o.legend={data:['应收(加权)','实收'],textStyle:{color:'#888',fontSize:10},top:5,icon:'rect',itemWidth:14,itemHeight:10};
-  o.series=[
-    {name:'应收(加权)',type:'line',data:d.should_rev_ma7,smooth:true,showSymbol:false,lineStyle:{width:2.5,color:C.orange},itemStyle:{color:C.orange},
-     areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(249,115,22,0.25)'},{offset:1,color:'rgba(249,115,22,0)'}]}}},
-    {name:'实收',type:'line',data:d.actual_rev_ma7,smooth:true,showSymbol:false,lineStyle:{width:2.5,color:C.green},itemStyle:{color:C.green},
-     areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(34,197,94,0.25)'},{offset:1,color:'rgba(34,197,94,0)'}]}}},
-  ];
+  o.series=[{name:'应收(加权)',type:'line',data:d.should_rev_ma7,smooth:true,showSymbol:false,lineStyle:{width:2.5,color:C.orange},itemStyle:{color:C.orange},areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(249,115,22,0.25)'},{offset:1,color:'rgba(249,115,22,0)'}]}}},{name:'实收',type:'line',data:d.actual_rev_ma7,smooth:true,showSymbol:false,lineStyle:{width:2.5,color:C.green},itemStyle:{color:C.green},areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(34,197,94,0.25)'},{offset:1,color:'rgba(34,197,94,0)'}]}}}];
   init('chartGemsRev').setOption(o);
 })();
 
-// 每日实收率趋势
-(function(){
-  if(!D.chart_gems_rev) return;
-  const d=D.chart_gems_rev,o=base();
-  o.xAxis.data=d.dates;
-  o.yAxis=[{type:'value',name:'流水($·7日均)',axisLine:{show:false},axisLabel:{color:C.sub,fontSize:10},splitLine:{lineStyle:{color:C.grid,type:'dashed'}}},
-    {type:'value',name:'实收率(%)',min:0,max:150,axisLine:{show:false},axisLabel:{color:C.sub,fontSize:10},splitLine:{show:false}}];
-  o.legend={data:['应收(7日均)','实收(7日均)','实收率(7日均)'],textStyle:{color:'#888',fontSize:10},top:5,icon:'rect',itemWidth:14,itemHeight:10};
-  o.grid={left:60,right:60,top:50,bottom:40};
-  o.series=[
-    {name:'应收(7日均)',type:'bar',data:d.should_rev_ma7,barWidth:3,itemStyle:{color:'rgba(249,115,22,0.35)'},yAxisIndex:0},
-    {name:'实收(7日均)',type:'bar',data:d.actual_rev_ma7,barWidth:3,itemStyle:{color:'rgba(34,197,94,0.5)'},yAxisIndex:0},
-    {name:'实收率(7日均)',type:'line',data:d.collect_rate_ma7,smooth:true,showSymbol:false,lineStyle:{width:2.5,color:C.cyan},itemStyle:{color:C.cyan},yAxisIndex:1},
-  ];
-  // 100%参考线
-  o.series.push({name:'100%',type:'line',data:d.dates.map(()=>100),showSymbol:false,lineStyle:{width:1,type:'dashed',color:'rgba(255,255,255,0.2)'},yAxisIndex:1,tooltip:{show:false}});
+// 实收率
+(function(){if(!D.chart_gems_rev)return;const d=D.chart_gems_rev,o=base();o.xAxis.data=d.dates;
+  o.yAxis=[{type:'value',name:'流水($·7日均)',axisLine:{show:false},axisLabel:{color:C.sub,fontSize:10},splitLine:{lineStyle:{color:C.grid,type:'dashed'}}},{type:'value',name:'实收率(%)',min:0,max:150,axisLine:{show:false},axisLabel:{color:C.sub,fontSize:10},splitLine:{show:false}}];
+  o.legend={data:['应收(7日均)','实收(7日均)','实收率(7日均)'],textStyle:{color:'#888',fontSize:10},top:5,icon:'rect',itemWidth:14,itemHeight:10};o.grid={left:60,right:60,top:50,bottom:40};
+  o.series=[{name:'应收(7日均)',type:'bar',data:d.should_rev_ma7,barWidth:3,itemStyle:{color:'rgba(249,115,22,0.35)'},yAxisIndex:0},{name:'实收(7日均)',type:'bar',data:d.actual_rev_ma7,barWidth:3,itemStyle:{color:'rgba(34,197,94,0.5)'},yAxisIndex:0},{name:'实收率(7日均)',type:'line',data:d.collect_rate_ma7,smooth:true,showSymbol:false,lineStyle:{width:2.5,color:C.cyan},itemStyle:{color:C.cyan},yAxisIndex:1},{name:'100%',type:'line',data:d.dates.map(()=>100),showSymbol:false,lineStyle:{width:1,type:'dashed',color:'rgba(255,255,255,0.2)'},yAxisIndex:1,tooltip:{show:false}}];
   init('chartGemsRate').setOption(o);
 })();
 
 // gift_1006
-(function(){
-  const d=D.chart_gift,o=base();
-  o.xAxis.data=d.dates;o.yAxis.name='流水(美元)';
-  o.legend.data=['gift_1006流水','7日均线','稳态基准'];
-  o.series=[
-    {name:'gift_1006流水',type:'bar',data:d.raw,barWidth:2,itemStyle:{color:'rgba(236,72,153,0.3)'},z:1},
-    {name:'7日均线',type:'line',data:d.ma7,smooth:true,showSymbol:false,lineStyle:{width:2,color:C.pink},z:3},
-    {name:'稳态基准',type:'line',data:d.dates.map(()=>d.baseline),showSymbol:false,lineStyle:{width:1.5,type:'dashed',color:C.orange},z:2},
-  ];
-  o.series[0].markLine=ml('2025-12-18');
-  init('chartGift').setOption(o);
+(function(){const d=D.chart_gift,o=base();o.xAxis.data=d.dates;o.yAxis.name='流水(美元)';o.legend.data=['空投礼包流水','7日均线','稳态基准'];
+  o.series=[{name:'空投礼包流水',type:'bar',data:d.raw,barWidth:2,itemStyle:{color:'rgba(236,72,153,0.3)'},z:1},{name:'7日均线',type:'line',data:d.ma7,smooth:true,showSymbol:false,lineStyle:{width:2,color:C.pink},z:3},{name:'稳态基准',type:'line',data:d.dates.map(()=>d.baseline),showSymbol:false,lineStyle:{width:1.5,type:'dashed',color:C.orange},z:2}];
+  o.series[0].markLine=ml('2025-12-18');init('chartGift').setOption(o);
 })();
 
 // endlessgift
-(function(){
-  const d=D.chart_endless,o=base();
-  o.xAxis.data=d.dates;o.yAxis.name='流水(美元)';
-  o.legend.data=['endlessgift流水','7日均线','稳态基准'];
-  o.series=[
-    {name:'endlessgift流水',type:'bar',data:d.raw,barWidth:2,itemStyle:{color:'rgba(167,139,250,0.3)'},z:1},
-    {name:'7日均线',type:'line',data:d.ma7,smooth:true,showSymbol:false,lineStyle:{width:2,color:C.purple},z:3},
-    {name:'稳态基准',type:'line',data:d.dates.map(()=>d.baseline),showSymbol:false,lineStyle:{width:1.5,type:'dashed',color:C.orange},z:2},
-  ];
-  o.series[0].markLine=ml('2025-12-18');
-  init('chartEndless').setOption(o);
+(function(){const d=D.chart_endless,o=base();o.xAxis.data=d.dates;o.yAxis.name='流水(美元)';o.legend.data=['无尽礼包流水','7日均线','稳态基准'];
+  o.series=[{name:'无尽礼包流水',type:'bar',data:d.raw,barWidth:2,itemStyle:{color:'rgba(167,139,250,0.3)'},z:1},{name:'7日均线',type:'line',data:d.ma7,smooth:true,showSymbol:false,lineStyle:{width:2,color:C.purple},z:3},{name:'稳态基准',type:'line',data:d.dates.map(()=>d.baseline),showSymbol:false,lineStyle:{width:1.5,type:'dashed',color:C.orange},z:2}];
+  o.series[0].markLine=ml('2025-12-18');init('chartEndless').setOption(o);
 })();
 
 // 综合
-(function(){
-  const d=D.chart_combined,o=base();
-  o.xAxis.data=d.dates;o.yAxis.name='流水(美元)';
-  o.legend.data=['道具卡现金','钻石·道具卡部分','gift_1006增量','endlessgift增量','等效总收入(7日均)','趋势预测'];
-  o.series=[
-    {name:'道具卡现金',type:'bar',stack:'t',data:d.itemcard,barWidth:3,itemStyle:{color:'rgba(34,197,94,0.5)'}},
-    {name:'钻石·道具卡部分',type:'bar',stack:'t',data:d.gems_ic,barWidth:3,itemStyle:{color:'rgba(96,165,250,0.6)'}},
-    {name:'gift_1006增量',type:'bar',stack:'t',data:d.gift_inc,barWidth:3,itemStyle:{color:'rgba(236,72,153,0.6)'}},
-    {name:'endlessgift增量',type:'bar',stack:'t',data:d.endless_inc,barWidth:3,itemStyle:{color:'rgba(167,139,250,0.6)'}},
-    {name:'等效总收入(7日均)',type:'line',data:d.total_equiv_ma7,smooth:true,showSymbol:false,lineStyle:{width:2.5,color:C.green},z:3},
-    {name:'趋势预测',type:'line',data:d.predicted,showSymbol:false,lineStyle:{width:2,type:'dashed',color:C.purple},z:2},
-  ];
+(function(){const d=D.chart_combined,o=base();o.xAxis.data=d.dates;o.yAxis.name='流水(美元)';
+  o.legend.data=['道具卡现金','钻石·道具卡部分','空投礼包增量','无尽礼包增量','等效总收入(7日均)','趋势预测'];
+  o.series=[{name:'道具卡现金',type:'bar',stack:'t',data:d.itemcard,barWidth:3,itemStyle:{color:'rgba(34,197,94,0.5)'}},{name:'钻石·道具卡部分',type:'bar',stack:'t',data:d.gems_ic,barWidth:3,itemStyle:{color:'rgba(96,165,250,0.6)'}},{name:'空投礼包增量',type:'bar',stack:'t',data:d.gift_inc,barWidth:3,itemStyle:{color:'rgba(236,72,153,0.6)'}},{name:'无尽礼包增量',type:'bar',stack:'t',data:d.endless_inc,barWidth:3,itemStyle:{color:'rgba(167,139,250,0.6)'}},{name:'等效总收入(7日均)',type:'line',data:d.total_equiv_ma7,smooth:true,showSymbol:false,lineStyle:{width:2.5,color:C.green},z:3},{name:'趋势预测',type:'line',data:d.predicted,showSymbol:false,lineStyle:{width:2,type:'dashed',color:C.purple},z:2}];
   init('chartCombined').setOption(o);
 })();
 
 // 月度表
-(function(){
-  const m=D.chart_monthly;
-  let h='<thead><tr><th>月份</th><th>道具卡现金</th><th>钻石·道具卡</th><th>gift_1006增量</th><th>endlessgift增量</th><th>等效总收入</th><th>趋势预测</th><th>缺口</th><th>新版本占比</th></tr></thead><tbody>';
-  for(let i=0;i<m.months.length;i++){
-    const gap=m.total_equiv[i]-m.predicted[i],gc=gap>=0?C.green:C.red;
-    h+=`<tr><td>${m.months[i]}</td><td>$${Math.round(m.itemcard[i]).toLocaleString()}</td><td>$${Math.round(m.gems_ic[i]).toLocaleString()}</td><td>$${Math.round(m.gift_inc[i]).toLocaleString()}</td><td>$${Math.round(m.endless_inc[i]).toLocaleString()}</td><td style="font-weight:600">$${Math.round(m.total_equiv[i]).toLocaleString()}</td><td>$${Math.round(m.predicted[i]).toLocaleString()}</td><td style="color:${gc}">${m.gap_pct[i]}%</td><td>${m.new_pct[i]}%</td></tr>`;
-  }
+(function(){const m=D.chart_monthly;
+  let h='<thead><tr><th>月份</th><th>道具卡现金</th><th>钻石·道具卡</th><th>空投礼包增量</th><th>无尽礼包增量</th><th>等效总收入</th><th>趋势预测</th><th>缺口</th><th>新版本占比</th></tr></thead><tbody>';
+  for(let i=0;i<m.months.length;i++){const g=m.total_equiv[i]-m.predicted[i],gc=g>=0?C.green:C.red;
+    h+='<tr><td>'+m.months[i]+'</td><td>$'+Math.round(m.itemcard[i]).toLocaleString()+'</td><td>$'+Math.round(m.gems_ic[i]).toLocaleString()+'</td><td>$'+Math.round(m.gift_inc[i]).toLocaleString()+'</td><td>$'+Math.round(m.endless_inc[i]).toLocaleString()+'</td><td style="font-weight:600">$'+Math.round(m.total_equiv[i]).toLocaleString()+'</td><td>$'+Math.round(m.predicted[i]).toLocaleString()+'</td><td style="color:'+gc+'">'+m.gap_pct[i]+'%</td><td>'+m.new_pct[i]+'%</td></tr>';}
   document.getElementById('tblMonthly').innerHTML=h+'</tbody>';
 })();
 
-// 结论
-(function(){
-  const ul=document.getElementById('conclusions');
-  const gr = D.chart_gems_rev||{};
-  const items=[
-    {tag:'核心结论',cls:'tag-yellow',text:`<b>道具卡改钻石兑换的机制本身是正向的，当前收入缺口完全由玩家钻石存量造成。</b>按应收口径（钻石消耗全部折算为现金），等效总收入约 $129,408，<b>超出趋势预测 +13.5%</b>。但实际因为62%的钻石消耗来自存量未产生收入，导致实收口径下缺口 ${K.equiv_vs_pred_pct}%。随着存量耗尽（实收率已从1月19%升至3月54%），收入将逐步回归应收水平。`},
-    {tag:'实收缺口',cls:'tag-red',text:`<b>实收口径下仍有缺口。</b>等效总收入日均 $${K.equiv_avg}，低于趋势预测 $${K.ic_pred_avg}，缺口 ${K.equiv_vs_pred_pct}%（累计 $${Math.abs(K.total_gap).toLocaleString()}）。钻石存量的应收 $${gr.total_should||'36,792'} vs 实收 $${gr.total_actual||'11,716'}，实收率 ${gr.total_rate||'31.8'}%。`},
-    {tag:'存量趋势',cls:'tag-blue',text:`<b>钻石存量正在加速消耗。</b>每日实收率从1月的~19%持续提升，3月已达~54%。钻石消耗量也从1月的日均27万降至3月的日均9.6万，说明存量正在减少且消费趋于理性。预计未来数月实收率将继续趋近100%。`},
-    {tag:'道具卡需求',cls:'tag-green',text:`<b>改版刺激了道具卡需求。</b>道具卡总流出量上线后增长+14.5%（92,243→105,609张/天），人均获取+8.8%。钻石兑换新增约11,372张/天（占总流出10.8%），说明降低获取门槛确实带来了增量。`},
-    {tag:'gift/endless',cls:'tag-gray',text:`<b>gift_1006/endlessgift 未承接分流。</b>两者上线后分别下降19.5%和13%，道具卡需求并未转移到这些含钻石/道具卡的礼包。`},
-    {tag:'建议',cls:'tag-green',text:`<b>建议：</b>① 关注实收率趋势，预计存量消耗完毕后收入将恢复增长；② 考虑加速存量消耗的运营手段（限时道具卡折扣等）；③ 提升新版本覆盖率（目前~21%），覆盖率提升将带动应收→实收的转化。`},
-  ];
-  items.forEach(it=>{
-    const li=document.createElement('li');
-    li.innerHTML=`<span class="tag ${it.cls}">${it.tag}</span>${it.text}`;
-    ul.appendChild(li);
-  });
-})();
-
 window.addEventListener('resize',()=>{document.querySelectorAll('[id^="chart"]').forEach(el=>{const c=echarts.getInstanceByDom(el);if(c)c.resize();});});
-
-// 侧边栏滚动高亮
 (function(){
-  const sections=['sec1','sec2','sec3','sec4','sec5','sec6','sec7'];
+  const secs=['sec0','sec1','sec2','sec3','sec3a','sec3b','sec3c','sec3d','sec3e','sec3f'];
   const links=document.querySelectorAll('.sidebar a');
-  // 平滑滚动
   links.forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
-  // 滚动监听高亮
-  function onScroll(){
-    let current='';
-    sections.forEach(id=>{
-      const el=document.getElementById(id);
-      if(el&&el.getBoundingClientRect().top<=120) current=id;
-    });
-    links.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+current);});
-  }
-  window.addEventListener('scroll',onScroll);
-  onScroll();
-  // 给html加平滑滚动
-  document.documentElement.style.scrollBehavior='smooth';
+  function onScroll(){let cur='';secs.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=120)cur=id;});links.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});}
+  window.addEventListener('scroll',onScroll);onScroll();document.documentElement.style.scrollBehavior='smooth';
 })();
 </script>
 </body>
