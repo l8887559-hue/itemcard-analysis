@@ -68,9 +68,9 @@ tr:hover td{background:rgba(96,165,250,.04)}
 <div id="sec0" class="note" style="border-left-color:#e0e0e0;margin-top:20px">
 <h3 style="color:#e0e0e0">📌 分析背景</h3>
 <p style="font-size:13px;line-height:2">
-本报告基于游戏后台数据，对游戏内购收入进行了全面分析。<b style="color:#e0e0e0">在此分析之前，团队对游戏内各模块的收入构成和占比缺乏清晰认知。</b><br><br>
+本报告基于<b style="color:#60a5fa">米大师收入数据</b>，对游戏内购收入进行了全面分析。<b style="color:#e0e0e0">在此分析之前，团队对游戏内各模块的收入构成和占比缺乏清晰认知。</b><br><br>
 报告分为两大部分：<br>
-<b style="color:#22c55e">一、游戏整体收入概览</b> — 首次全面披露游戏七大收入模块的构成、占比和趋势。<span style="color:#f59e0b">核心发现：道具卡收入占比高达35~42%，远超预期，</span>是仅次于金币的第二大收入来源。<br>
+<b style="color:#22c55e">一、游戏整体收入概览</b> — 整理近一年游戏七大收入模块的构成、占比和趋势。<span style="color:#f59e0b">核心发现：道具卡收入占比高达35~42%，远超预期，</span>是仅次于金币的第二大收入来源。<br>
 <b style="color:#f59e0b">二、道具卡钻石兑换改版影响分析</b> — 2025.12.18新版本将道具卡从现金直购改为钻石兑换。鉴于道具卡占收入比重极高，需重点评估影响。涵盖：版本覆盖、销售额变化、流出与钻石消耗、关联品类、综合等效收入，以及<b style="color:#ef4444">新版本全量后的收入影响预测</b>。
 </p>
 </div>
@@ -131,7 +131,7 @@ tr:hover td{background:rgba(96,165,250,.04)}
 </p>
 </div>
 <div class="section"><h2>📊 道具卡实际销售金额 vs 趋势预测金额</h2><div class="desc">蓝色=7日均线(实际)，橙色虚线=趋势预测(如果保持旧模式)，红色竖线=12.18上线</div><div id="chartIC" class="chart-box tall"></div></div>
-<div class="section"><h2>🃏 道具卡分规格售卖趋势</h2><div class="desc">×30($0.99) / ×100($2.99) / ×500($9.98)。左轴=流水，右轴=购买人数</div><div id="chartICSpec" class="chart-box tall"></div></div>
+<div class="section"><h2>🃏 道具卡现金销售分规格售卖趋势</h2><div class="desc">×30($0.99) / ×100($2.99) / ×500($9.98)。左轴=流水，右轴=购买人数</div><div id="chartICSpec" class="chart-box tall"></div></div>
 
 <!-- 2.3 流出与钻石消耗 -->
 <h3 id="sec3c" class="ch-sub" style="color:#60a5fa">2.3 道具卡流出与钻石消耗</h3>
@@ -139,7 +139,7 @@ tr:hover td{background:rgba(96,165,250,.04)}
 <h3 style="color:#60a5fa">📦 流出与钻石消耗观察</h3>
 <p style="font-size:13px">
 新版本上线后道具卡总流出量<b style="color:#22c55e">增长+14.5%</b>（92,243→105,609张/天），钻石兑换降低了获取门槛，刺激了更多消费需求。<br><br>
-钻石消耗方面，<b style="color:#f59e0b">上线初期存量钻石消耗冲高非常明显</b>（1月峰值日均27万），随后逐渐平缓回落至3月日均9.6万。<b style="color:#e0e0e0">每日实收率仍低于100%，但正在逐步上升</b>（1月~19% → 3月~54%），存量正在减少。<br>
+钻石消耗方面，<b style="color:#f59e0b">上线初期存量钻石消耗冲高非常明显</b>（1月峰值日均27万），随后逐渐平缓回落至3月日均9.6万。<b style="color:#e0e0e0">每日实收率仍远低于100%，但正在逐步上升</b>（1月~19% → 3月~54%），存量正在减少。<br>
 注：游戏内除直充外，广告和其他活动也会产出钻石，因此实收率不会完全达到100%。
 </p>
 </div>
@@ -151,6 +151,21 @@ tr:hover td{background:rgba(96,165,250,.04)}
 <div class="two-col">
 <div class="section"><h2>💵 钻石兑换：应收 vs 实收（7日均）</h2><div class="desc">应收=钻石消耗折算为现金（$0.00228/钻），实收=新版本钻石实际收入</div><div id="chartGemsRev" class="chart-box"></div></div>
 <div class="section"><h2>📈 每日实收率趋势（7日均）</h2><div class="desc">1月~19%逐步升至3月~54%，存量减少中但仍有非直充钻石产出</div><div id="chartGemsRate" class="chart-box"></div></div>
+</div>
+<div class="note" style="border-left-color:#06b6d4">
+<h3 style="color:#06b6d4">📈 实收率趋势预判</h3>
+<p style="font-size:13px;line-height:2">
+<b style="color:#e0e0e0">实收率是一个逐步上升的过程。</b>新版本上线初期，玩家手中持有大量存量钻石，因此实收率极低（1月仅~19%），意味着每消耗100钻中仅19钻来自新购买。<br><br>
+<b style="color:#f59e0b">趋势观察：</b>随着存量钻石逐步消耗，实收率呈<b style="color:#22c55e">稳定上升态势</b>：<br>
+• 1月：~19%（存量冲高期，大量玩家用存量钻石兑换道具卡）<br>
+• 2月：~35%（存量消耗减速，新购占比上升）<br>
+• 3月：~54%（存量进一步减少，接近半数来自新购）<br><br>
+<b style="color:#e0e0e0">按此趋势预判：</b><br>
+• <b style="color:#f59e0b">4-5月</b>：预计实收率将上升至 <b style="color:#f59e0b">65~75%</b>，存量钻石接近枯竭<br>
+• <b style="color:#22c55e">6-7月</b>：预计实收率将达到 <b style="color:#22c55e">80~90%</b>，大部分钻石消耗来自新购买<br>
+• <b style="color:#888">长期稳态</b>：由于广告奖励和活动等免费钻石来源持续存在，实收率不会达到100%，预计长期稳态在 <b style="color:#e0e0e0">85~92%</b> 区间<br><br>
+<span style="color:#ef4444">⚠️ 注意：如果新版本全量推送，将有大量老版本用户首次获得钻石兑换入口，可能触发类似1月的存量冲高，实收率会出现阶段性回落。全量后的实收率恢复周期需重新评估。</span>
+</p>
 </div>
 
 <!-- 2.4 关联品类 -->
@@ -171,6 +186,22 @@ tr:hover td{background:rgba(96,165,250,.04)}
 
 <!-- 2.5 综合等效收入 -->
 <h3 id="sec3e" class="ch-sub" style="color:#a78bfa">2.5 综合等效收入</h3>
+<div class="note" style="border-left-color:#a78bfa">
+<h3 style="color:#a78bfa">📌 综合等效收入说明</h3>
+<p style="font-size:13px;line-height:2">
+<b style="color:#e0e0e0">核心问题：</b>道具卡从现金直购改为钻石兑换后，收入从"直接现金"变为"钻石消耗"。如何衡量改版后的真实收入水平？<br><br>
+<b style="color:#f59e0b">分析方法：</b>将所有与道具卡相关的收入通道<b style="color:#e0e0e0">统一折算为等效现金价值</b>，构建"综合等效收入"指标：<br>
+① <b>道具卡现金直购</b>：老版本用户的直接现金购买收入（实收）<br>
+② <b>钻石兑换道具卡部分</b>：新版本用户消耗钻石兑换道具卡，按加权单价（$0.00228/钻）折算为等效现金。<span style="color:#ef4444">⚠️ 这里需区分"应收"与"实收"——存量钻石消耗不产生真实收入，仅新购钻石消耗才是实收。</span><br>
+③ <b>空投礼包超基准增量</b>：改版后空投礼包超出稳态基准的增量部分<br>
+④ <b>无尽礼包超基准增量</b>：改版后无尽礼包超出稳态基准的增量部分<br><br>
+<b style="color:#22c55e">最重要的数据：</b><br>
+• <b style="color:#e0e0e0">应收口径等效总收入</b>约$129,408，超出趋势预测+13.5%，说明<b style="color:#22c55e">钻石兑换机制本身刺激了更多消费需求</b><br>
+• <b style="color:#ef4444">实收口径缺口约-10.7%</b>，缺口完全来自<b style="color:#ef4444">玩家消耗存量钻石未产生真实收入</b>（62%的钻石消耗来自存量）<br>
+• <b style="color:#f59e0b">关键结论：机制正向 + 存量负向 = 当前净影响为负，但随着存量消耗，实收将逐步趋近应收</b><br><br>
+<span style="color:#888">注：综合等效收入需要纳入钻石转化的考量。当前缺口计算已包含存量钻石消耗部分的等效收入折算，但因存量钻石不产生实际现金流入，实收与应收之间的差距正是存量消耗造成的"虚假收入"。随着存量逐步耗尽，两者将趋于一致。</span>
+</p>
+</div>
 <div class="section"><h2>🔄 综合等效收入 vs 趋势预测</h2><div class="desc">道具卡现金+钻石道具卡部分+空投礼包增量+无尽礼包增量 = 等效总收入</div><div id="chartCombined" class="chart-box tall"></div></div>
 <div class="section"><h2>📋 月度综合汇总</h2><div class="desc">按月查看各项关键指标</div><div style="overflow-x:auto"><table id="tblMonthly"></table></div></div>
 
@@ -209,7 +240,7 @@ function init(id){return echarts.init(document.getElementById(id));}
   const gr=D.chart_gems_rev||{};
   const items=[
     {tag:'整体收入',cls:'tag-green',text:'<b style="color:#22c55e">道具卡收入占总直购收入35~42%，远超预期</b>，是仅次于金币的第二大收入来源。金币+道具卡合计占比近80%，任何对道具卡的调整都会显著影响整体收入。'},
-    {tag:'核心判断',cls:'tag-yellow',text:'<b style="color:#f59e0b">道具卡改钻石兑换的机制本身是正向的，当前收入缺口完全由玩家钻石存量造成。</b>按应收口径（钻石消耗全部折算为现金），等效总收入约$129,408，<b style="color:#22c55e">超出趋势预测+13.5%</b>。但实际因62%的钻石消耗来自存量未产生收入，导致实收口径缺口'+K.equiv_vs_pred_pct+'%。实收率正在逐步上升（1月19%→3月54%），收入将逐步回归应收水平。'},
+    {tag:'核心判断',cls:'tag-yellow',text:'<b style="color:#f59e0b">道具卡改钻石兑换的机制本身是正向的，当前收入缺口完全由玩家钻石存量造成。</b>按应收口径（钻石消耗全部折算为现金），等效总收入约$129,408，<b style="color:#22c55e">超出趋势预测+13.5%</b>。<b style="color:#ef4444">但因钻石存量问题，62%的钻石消耗来自存量未产生收入，对收入有负向影响</b>，导致实收口径缺口'+K.equiv_vs_pred_pct+'%。实收率正在逐步上升（1月19%→3月54%），收入将逐步回归应收水平。'},
     {tag:'全量风险',cls:'tag-red',text:'<b style="color:#ef4444">⚠️ 如果新版本全量覆盖，道具卡收入将完全依赖钻石购买转化。</b>目前新版本仅覆盖~21%用户，道具卡现金收入主要来自80%的老版本用户。全量后，道具卡现金直购收入将降为0，全部转为钻石兑换。在存量未消耗完的过渡期，收入损失将显著扩大。'},
     {tag:'建议',cls:'tag-blue',text:'<b>建议：</b>① 持续监控实收率趋势，评估存量消耗进度；② 全量推送前需评估剩余钻石存量规模；③ 考虑设计过渡期运营策略（限时折扣加速存量消耗）；④ 关注全量后钻石购买转化率是否能覆盖道具卡收入需求。'},
   ];
