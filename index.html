@@ -100,8 +100,8 @@ tr:hover td{background:rgba(96,165,250,.04)}
 </p>
 </div>
 <div class="two-col">
-<div class="section"><h2>💰 直购收入构成 — 日度趋势(7日均)</h2><div class="desc">各模块收入的7日移动平均</div><div id="chartRev" class="chart-box"></div></div>
-<div class="section"><h2>💰 直购收入构成 — 月度金额</h2><div class="desc">各模块月度收入金额</div><div id="chartRevM" class="chart-box"></div></div>
+<div class="section"><h2>💰 直购收入构成 — 日度趋势(7日均)</h2><div class="desc">各模块收入的7日移动平均<br><span style="color:#555;font-size:10px">📁 数据源: 付费商品售卖统计（米大师后台）| 区间: 2025-09-02 ~ 2026-04-08</span></div><div id="chartRev" class="chart-box"></div></div>
+<div class="section"><h2>💰 直购收入构成 — 月度金额</h2><div class="desc">各模块月度收入金额<br><span style="color:#555;font-size:10px">📁 数据源: 付费商品售卖统计（米大师后台）</span></div><div id="chartRevM" class="chart-box"></div></div>
 </div>
 <div class="section"><h2>📈 直购收入构成 — 各模块占比变化趋势</h2><div class="desc">各收入类型占比（7日均），观察道具卡和钻石占比此消彼长</div><div id="chartRevPct" class="chart-box tall"></div></div>
 <div class="section"><h2>📋 直购收入构成 - 月度</h2><div class="desc">🟢 老版本only | 🔵 新版本only | ⚪ 新老都有</div><div style="overflow-x:auto"><table id="tblRevDetail"></table></div></div>
@@ -120,7 +120,7 @@ tr:hover td{background:rgba(96,165,250,.04)}
 
 <!-- 2.1 版本覆盖 -->
 <h3 id="sec3a" class="ch-sub" style="color:#06b6d4">2.1 版本覆盖情况</h3>
-<div class="section"><h2>👥 版本覆盖</h2><div class="desc">12.18上线迅速达~13%，此后缓慢上升至~21%。目前仅约1/5用户使用新版本</div><div id="chartVer" class="chart-box"></div></div>
+<div class="section"><h2>👥 版本覆盖</h2><div class="desc">12.18上线迅速达~13%，此后缓慢上升至~21%。目前仅约1/5用户使用新版本<br><span style="color:#555;font-size:10px">📁 数据源: 分版本留存统计（游戏后台）</span></div><div id="chartVer" class="chart-box"></div></div>
 
 <!-- 2.2 销售额变化 -->
 <h3 id="sec3b" class="ch-sub" style="color:#f59e0b">2.2 道具卡销售额变化</h3>
@@ -137,9 +137,9 @@ tr:hover td{background:rgba(96,165,250,.04)}
 <span style="color:#888">缺口来源详见后续"2.4 钻石消耗分析"和"2.5 综合等效收入"章节。</span>
 </p>
 </div>
-<div class="section"><h2>📊 道具卡现金销售金额 vs 趋势预测</h2><div class="desc">仅统计老版本(Cocos)用户现金直购部分。蓝色=7日均线(实际)，橙色虚线=趋势预测(如果保持旧模式)</div><div id="chartIC" class="chart-box tall"></div></div>
-<div class="section"><h2>📊 道具卡综合收入（现金直购 + 新版本钻石实收）</h2><div class="desc">绿色=现金直购(7日均)，蓝色=新版本钻石实收(7日均)，白线=综合收入(7日均)，紫色虚线=趋势预测</div><div id="chartICCombined" class="chart-box tall"></div></div>
-<div class="section"><h2>🃏 道具卡现金销售分规格售卖趋势</h2><div class="desc">×30($0.99) / ×100($2.99) / ×500($9.98)。左轴=流水，右轴=购买人数</div><div id="chartICSpec" class="chart-box tall"></div></div>
+<div class="section"><h2>📊 道具卡现金销售金额 vs 趋势预测</h2><div class="desc">仅统计老版本(Cocos)用户现金直购部分。蓝色=7日均线(实际)，橙色虚线=趋势预测(如果保持旧模式)<br><span style="color:#555;font-size:10px">📁 数据源: 付费商品售卖统计 — itemcard_02/03/04 | 区间: 2025-09-02 ~ 2026-04-07</span></div><div id="chartIC" class="chart-box tall"></div></div>
+<div class="section"><h2>📊 道具卡综合收入（现金直购 + 新版本钻石实收）</h2><div class="desc">绿色=现金直购(7日均)，蓝色=新版本钻石实收(7日均)，白线=综合收入(7日均)，紫色虚线=趋势预测<br><span style="color:#555;font-size:10px">📁 数据源: 付费商品售卖统计 — itemcard + gems | ⚠️ 钻石实收数据截止4/1（缺少道具流出统计4/2+数据）</span></div><div id="chartICCombined" class="chart-box tall"></div></div>
+<div class="section"><h2>🃏 道具卡现金销售分规格售卖趋势</h2><div class="desc">×30($0.99) / ×100($2.99) / ×500($9.98)。左轴=流水，右轴=购买人数<br><span style="color:#555;font-size:10px">📁 数据源: 付费商品售卖统计 — itemcard_02/03/04</span></div><div id="chartICSpec" class="chart-box tall"></div></div>
 
 <!-- 2.3 道具卡流出 -->
 <h3 id="sec3c" class="ch-sub" style="color:#60a5fa">2.3 道具卡流出分析</h3>
@@ -151,8 +151,8 @@ tr:hover td{background:rgba(96,165,250,.04)}
 <span style="color:#ef4444">⚠️ 钻石稀释效应：</span>游戏内除直充外，空投礼包（gift_1006含400宝石/份）和无尽礼包（各档位含钻石）持续流出钻石，日均约3.3万颗。虽然这两类礼包收入并未因改版增长，但其稳定流出的钻石也被用于兑换道具卡，<b style="color:#e0e0e0">稀释了一部分原本应来自钻石直购的道具卡收入</b>。
 </p>
 </div>
-<div class="section"><h2>📦 道具卡流出总量趋势（新老版本合计）</h2><div class="desc">上线后短期流出增长（1月+18.8%），长期已逐步回落至接近上线前水平（仅略高约4~5%）</div><div id="chartFlowTotal" class="chart-box tall"></div></div>
-<div class="section"><h2>📊 道具卡流出构成拆分</h2><div class="desc">现金购买 + 钻石兑换(净) + 空投礼包 + 无尽礼包 + 其他(广告等)</div><div id="chartFlowBreak" class="chart-box tall"></div></div>
+<div class="section"><h2>📦 道具卡流出总量趋势（新老版本合计）</h2><div class="desc">上线后短期流出增长（1月+18.8%），长期已逐步回落至接近上线前水平（仅略高约4~5%）<br><span style="color:#555;font-size:10px">📁 数据源: 道具流出统计（游戏后台）| 区间: 2025-12-03 ~ 2026-04-01</span></div><div id="chartFlowTotal" class="chart-box tall"></div></div>
+<div class="section"><h2>📊 道具卡流出构成拆分</h2><div class="desc">现金购买 + 钻石兑换(净) + 空投礼包 + 无尽礼包 + 其他(广告等)<br><span style="color:#555;font-size:10px">📁 数据源: 道具流出统计 + 付费商品售卖统计 + 礼包配置表</span></div><div id="chartFlowBreak" class="chart-box tall"></div></div>
 
 <!-- 2.3b 钻石消耗 -->
 <h3 id="sec3c2" class="ch-sub" style="color:#f59e0b">2.4 钻石消耗分析</h3>
@@ -171,11 +171,11 @@ tr:hover td{background:rgba(96,165,250,.04)}
 </p>
 </div>
 <div class="two-col">
-<div class="section"><h2>💎 道具卡钻石消耗趋势</h2><div class="desc">初期存量冲高明显，随后逐步回落。虚线=上线前基线</div><div id="chartFlowGems" class="chart-box"></div></div>
-<div class="section"><h2>💵 钻石兑换：应收 vs 实收（7日均）</h2><div class="desc">应收=钻石消耗折算为现金（$0.00228/钻）。实收=新版本中商城钻石购买的增量收入（基本等效于新版本中钻石兑换道具卡的收入）</div><div id="chartGemsRev" class="chart-box"></div></div>
+<div class="section"><h2>💎 道具卡钻石消耗趋势</h2><div class="desc">初期存量冲高明显，随后逐步回落。虚线=上线前基线<br><span style="color:#555;font-size:10px">📁 数据源: 道具流出统计 — 消耗钻石数量 | 区间: 2025-12-03 ~ 2026-04-01</span></div><div id="chartFlowGems" class="chart-box"></div></div>
+<div class="section"><h2>💵 钻石兑换：应收 vs 实收（7日均）</h2><div class="desc">应收=钻石消耗折算为现金（$0.00228/钻）。实收=新版本中商城钻石购买的增量收入（基本等效于新版本中钻石兑换道具卡的收入）<br><span style="color:#555;font-size:10px">📁 数据源: 道具流出统计（应收）+ 付费商品售卖统计 gems01~06（实收）| 区间: 2025-12-18 ~ 2026-04-01</span></div><div id="chartGemsRev" class="chart-box"></div></div>
 </div>
-<div class="section"><h2>💎 新版本钻石消耗来源拆分（7日均）</h2><div class="desc">礼包按新版本20%用户折算，广告为新版本(Unity)独有功能。付费购买(绿)+空投礼包(粉)+无尽礼包(紫)+广告(灰)+存量(红)=总消耗</div><div id="chartGemsBreakdown" class="chart-box tall"></div></div>
-<div class="section"><h2>📈 每日实收率趋势（7日均）</h2><div class="desc">1月~19%逐步升至3月~54%，4月初~65%。长期稳态预估约74~79%</div><div id="chartGemsRate" class="chart-box tall"></div></div>
+<div class="section"><h2>💎 新版本钻石消耗来源拆分（7日均）</h2><div class="desc">礼包按新版本20%用户折算，广告为新版本(Unity)独有功能。付费购买(绿)+空投礼包(粉)+无尽礼包(紫)+广告(灰)+存量(红)=总消耗<br><span style="color:#555;font-size:10px">📁 数据源: 道具流出统计（应收/总消耗）+ 付费商品售卖统计 gems（实收/付费）+ 礼包流出统计（礼包钻石×20%）+ 广告钻石数据（广告×100%）| 区间: 2025-12-18 ~ 2026-04-01</span></div><div id="chartGemsBreakdown" class="chart-box tall"></div></div>
+<div class="section"><h2>📈 每日实收率趋势（7日均）</h2><div class="desc">1月~19%逐步升至3月~54%，4月初~65%。长期稳态预估约74~79%<br><span style="color:#555;font-size:10px">📁 数据源: 道具流出统计 + 付费商品售卖统计 gems</span></div><div id="chartGemsRate" class="chart-box tall"></div></div>
 <div class="note" style="border-left-color:#06b6d4">
 <h3 style="color:#06b6d4">📈 实收率趋势预判</h3>
 <p style="font-size:13px;line-height:2">
@@ -213,8 +213,8 @@ tr:hover td{background:rgba(96,165,250,.04)}
 </p>
 </div>
 <div class="two-col">
-<div class="section"><h2>🎁 空投礼包 (gift_1006)</h2><div class="desc">含50,000金币+400宝石+30道具卡。稳态$52/天 → 上线后$42/天（-19.5%）</div><div id="chartGift" class="chart-box"></div></div>
-<div class="section"><h2>🎁 无尽礼包 (endlessgift)</h2><div class="desc">多档位（含钻石）。稳态$217/天 → 上线后$189/天（-13%）</div><div id="chartEndless" class="chart-box"></div></div>
+<div class="section"><h2>🎁 空投礼包 (gift_1006)</h2><div class="desc">含50,000金币+400宝石+30道具卡。稳态$52/天 → 上线后$42/天（-19.5%）<br><span style="color:#555;font-size:10px">📁 数据源: 付费商品售卖统计 — gift_1006</span></div><div id="chartGift" class="chart-box"></div></div>
+<div class="section"><h2>🎁 无尽礼包 (endlessgift)</h2><div class="desc">多档位（含钻石）。稳态$217/天 → 上线后$189/天（-13%）<br><span style="color:#555;font-size:10px">📁 数据源: 付费商品售卖统计 — endlessgift_0001~0100</span></div><div id="chartEndless" class="chart-box"></div></div>
 </div>
 
 <!-- 2.5 综合等效收入 -->
